@@ -38,6 +38,7 @@ ul {
 
 a:hover {
   color: $white;
+  transition: all 0.8s;
 }
 
 input {
@@ -54,6 +55,7 @@ svg {
 
 svg:hover {
   fill: $white;
+  transition: all 0.8s;
 }
 
 .container {
@@ -95,9 +97,11 @@ svg:hover {
       align-items: center;
       &:hover {
         color: $white;
+        transition: all 0.8s;
       }
       &:hover > svg {
         fill: $white;
+        transition: all 0.8s;
       }
     }
     &_login {
@@ -126,6 +130,31 @@ svg:hover {
     column-gap: 1.25rem;
     grid-template-columns: repeat(4, 1fr);
   }
+  &_link {
+    position: relative;
+  }
+
+  &_description {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    background: rgba(15, 21, 36, 0.7);
+    height: 100%;
+    padding: 1.8rem;
+    font-size: 1.8rem;
+    color: $white;
+    flex-direction: column;
+    line-height: 2rem;
+    &:hover {
+      transition: all 0.8s;
+      opacity: 1;
+}
+    &_h3 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+  }
 }
 
 .footer {
@@ -148,25 +177,33 @@ svg:hover {
     position: relative;
   }
   &_call {
+    z-index: 1;
+    position: relative;
     &:hover ~ div {
-      //display: block;
       opacity: 1;
       transition: all 0.8s;
       -webkit-transition: all 0.8s;
       -moz-transition: all 0.8s;
       -ms-transition: all 0.8s;
       -o-transition: all 0.8s;
-      transform: translateY(3.8rem);
-      -webkit-transform: translateY(3.8rem);
-      -moz-transform: translateY(3.8rem);
-      -ms-transform: translateY(3.8rem);
-      -o-transform: translateY(3.8rem);
-}
+      transform: translateY(6.1rem);
+      -webkit-transform: translateY(6.1rem);
+      -moz-transform: translateY(6.1rem);
+      -ms-transform: translateY(6.1rem);
+      -o-transform: translateY(6.1rem);
+    }
     &_text {
+      top: 2rem;
+      left: -8%;
+      display: block;
       position: absolute;
       opacity: 0;
       background-color: $orangePurple;
-      
+      font-size: 1.5rem;
+      color: $white;
+      width: 14.8rem;
+      padding: 1.8rem;
+      text-align: center;
     }
   }
 }
