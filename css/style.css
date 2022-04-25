@@ -79,6 +79,10 @@ svg:hover {
   display: grid;
 }
 
+.grey_text {
+  color: #8C8493;
+}
+
 .header {
   background-color: #280C41;
   font-size: 2.5rem;
@@ -109,18 +113,25 @@ svg:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .header_blocks_search:hover {
   color: #f3f3f3;
-  -webkit-transition: all 0.8s;
   transition: all 0.8s;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  -o-transition: all 0.8s;
 }
 
 .header_blocks_search:hover > svg {
   fill: #f3f3f3;
-  -webkit-transition: all 0.8s;
   transition: all 0.8s;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  -o-transition: all 0.8s;
 }
 
 .header_blocks_login {
@@ -132,6 +143,93 @@ svg:hover {
 
 .header_blocks_img {
   margin-right: 1.8rem;
+}
+
+.header_blocks_authorization {
+  position: absolute;
+  opacity: 0;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  background-color: #73009f;
+  right: 3%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  z-index: 2;
+}
+
+.header_blocks_authorization:hover, .header_blocks_authorization:active {
+  opacity: 1;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+  transform: translateY(14.8rem);
+  -webkit-transform: translateY(14.8rem);
+  -moz-transform: translateY(14.8rem);
+  -ms-transform: translateY(14.8rem);
+  -o-transform: translateY(14.8rem);
+}
+
+.header_blocks_authorization_form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.header_blocks_authorization_p {
+  font-weight: 400;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.header_blocks_authorization_input {
+  display: block;
+  width: 27.8rem;
+  height: 3.8rem;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input::-webkit-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input:-ms-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input::-ms-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input::placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_link {
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
 }
 
 .h2 {
@@ -158,6 +256,7 @@ svg:hover {
 
 .main_catalog_link {
   position: relative;
+  border-radius: 10px;
 }
 
 .main_catalog_description {
@@ -247,5 +346,6 @@ svg:hover {
   width: 14.8rem;
   padding: 1.8rem;
   text-align: center;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -77,6 +77,10 @@ svg:hover {
   display: grid;
 }
 
+.grey_text {
+  color: $grey;
+}
+
 .header {
   background-color: $purple;
   font-size: 2.5rem;
@@ -95,13 +99,22 @@ svg:hover {
     width: 30%;
     &_search {
       align-items: center;
+      position: relative;
       &:hover {
         color: $white;
         transition: all 0.8s;
+        -webkit-transition: all 0.8s;
+        -moz-transition: all 0.8s;
+        -ms-transition: all 0.8s;
+        -o-transition: all 0.8s;
       }
       &:hover > svg {
         fill: $white;
         transition: all 0.8s;
+        -webkit-transition: all 0.8s;
+        -moz-transition: all 0.8s;
+        -ms-transition: all 0.8s;
+        -o-transition: all 0.8s;
       }
     }
     &_login {
@@ -110,6 +123,62 @@ svg:hover {
     }
     &_img {
       margin-right: 1.8rem;
+    }
+    &_authorization {
+      position: absolute;
+      opacity: 0;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      background-color: $lightPurple;
+      right: 3%;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      z-index: 2;
+      &:hover,
+      &:active {
+        opacity: 1;
+        transition: all 0.8s;
+        transform: translateY(14.8rem);
+        -webkit-transform: translateY(14.8rem);
+        -moz-transform: translateY(14.8rem);
+        -ms-transform: translateY(14.8rem);
+        -o-transform: translateY(14.8rem);
+      }
+      &_form {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      &_p {
+        font-weight: 400;
+        font-size: 2.2rem;
+        text-align: center;
+      }
+      &_input {
+        display: block;
+        width: 27.8rem;
+        height: 3.8rem;
+        background-color: $white;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        text-align: center;
+        color: $grey;
+        font-size: 1.8rem;
+        &::placeholder,
+        &:focus,
+        &:active {
+          text-align: center;
+          color: $grey;
+          font-size: 1.8rem;
+        }
+      }
+      &_link {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+      }
     }
   }
 }
@@ -132,6 +201,7 @@ svg:hover {
   }
   &_link {
     position: relative;
+    border-radius: 10px;
   }
 
   &_description {
@@ -148,7 +218,7 @@ svg:hover {
     &:hover {
       transition: all 0.8s;
       opacity: 1;
-}
+    }
     &_h3 {
       font-weight: 700;
       font-size: 2rem;
@@ -204,6 +274,7 @@ svg:hover {
       width: 14.8rem;
       padding: 1.8rem;
       text-align: center;
+      border-radius: 10px;
     }
   }
 }

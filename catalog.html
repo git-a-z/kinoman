@@ -38,10 +38,21 @@
           </a>
         </div>
         <div class="flex sp_btw header_blocks_login">
-          <a href="#" class="flex header_blocks_search">
+          <p class="flex header_blocks_search">
             <img src="img/user.svg" alt="account" class="header_blocks_img" />
             Войти
-          </a>
+            <div class="flex header_blocks_authorization">
+              <p class="header_blocks_authorization_p">АВТОРИЗАЦИЯ</p>
+              <form action="#" class="flex header_blocks_authorization_form">
+                <input type="text" class="header_blocks_authorization_input" 
+                placeholder="Введите логин"/>
+                <input type="password" name="password" id="password" 
+                class="header_blocks_authorization_input"
+                placeholder="Введите пароль" />
+              </form>
+              <a href="#" class="header_blocks_authorization_link">Нет учетной записи? <span class="grey_text">Зарегистрируйся</span></a>
+            </div>
+          </p>
         </div>
       </div>
     </header>
@@ -51,11 +62,7 @@
           <h2 class="h2">Новинки</h2>
           <div class="grid main_catalog_section">
             <a href="#" class="main_catalog_link">
-              <img
-                src="img/poster_small/valdo.png"
-                alt="Valdo"
-                
-              />
+              <img src="img/poster_small/valdo.png" alt="Valdo" />
               <div class="flex sp_btw main_catalog_description">
                 <div>
                   <svg
