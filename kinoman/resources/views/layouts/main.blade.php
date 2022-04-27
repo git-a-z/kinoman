@@ -10,19 +10,18 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
 </head>
 <body>
-    <div class="header">
+    
         @include('blocks.menu')
-        <hr>
-    </div>
-    <div class="content">
+        
+    
+    <main class="content container">
         <h1>
             @yield('pageName')
         </h1>
         @yield('content')
-    </div>
-    <div class="footer">
-        <hr>
-        <p>footer</p>
-    </div>
+    </main>
+
+    @include('blocks.footer')
+  
 </body>
 </html>
