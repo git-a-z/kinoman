@@ -9,11 +9,12 @@
 @endsection
 
 @section('content')
+<main class="content container">
 <ul>
     
         <li class="main_catalog">
         
-          <!-- <h2 class="h2">Новинки</h2> -->
+          <h2 class="h2">Новинки</h2>
           <div class="grid main_catalog_section">
           @forelse($data as $item)
             <a href="{{route('film', $item->id)}}" class="main_catalog_link">
@@ -69,9 +70,7 @@
           </div>
           
         </li>
-      
-
-
-   
     </ul>
+
+</main>
 @endsection

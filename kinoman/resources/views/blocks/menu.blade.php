@@ -1,11 +1,11 @@
-<!-- <div class="main-menu">
-    <ul>
-        <li><a href="{{route('home')}}">Начало</a></li>
-        <li><a href="{{route('catalog')}}">Каталог</a></li>
-    </ul>
-</div> -->
+
 <header class="container flex sp_btw header">
       <nav class="flex header_navigation">
+        <div class="header_logo">
+          <img src="/img/logo.svg" alt="logo" class="header_logo_img">
+          <p class="header_logo_p">Киноман</p>
+        </div>
+        
         <ul class="flex sp_btw header_navigation_list">
           <li><a href="{{route('catalog')}}">Фильмы</a></li>
           <li><a href="#">Сериалы</a></li>
@@ -31,7 +31,7 @@
         
         <div class="flex sp_btw header_blocks_login">
           <p class="flex header_blocks_search">
-            <img src="img/user.svg" alt="account" class="header_blocks_img" />
+            <img src="/img/user.svg" alt="account" class="header_blocks_img" />
             Войти
             <div class="flex header_blocks_authorization">
               <p class="header_blocks_authorization_p">АВТОРИЗАЦИЯ</p>
