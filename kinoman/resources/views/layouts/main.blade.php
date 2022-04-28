@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/movie.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
 </head>
 <body>
-    <div class="header">
+    
         @include('blocks.menu')
-        <hr>
-    </div>
-    <div class="content">
+        
+    
+    <!-- <main class="content container"> -->
         <h1>
-            @yield('pageName')
+            <!-- @yield('pageName') -->
         </h1>
         @yield('content')
-    </div>
-    <div class="footer">
-        <hr>
-        <p>footer</p>
-    </div>
+    <!-- </main> -->
+
+    @include('blocks.footer')
+  
 </body>
 </html>

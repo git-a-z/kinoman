@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-decoration: none;
 }
 
@@ -33,6 +33,7 @@ ul {
 
 a:hover {
   color: #f3f3f3;
+  -webkit-transition: all 0.8s;
   transition: all 0.8s;
 }
 
@@ -50,6 +51,7 @@ svg {
 
 svg:hover {
   fill: #f3f3f3;
+  -webkit-transition: all 0.8s;
   transition: all 0.8s;
 }
 
@@ -61,14 +63,19 @@ svg:hover {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .sp_btw {
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .grid {
+  display: -ms-grid;
   display: grid;
 }
 
@@ -80,13 +87,17 @@ svg:hover {
   background-color: #280C41;
   font-size: 2.5rem;
   font-weight: 700;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #8C8493;
 }
 
 .header_navigation {
   height: 12.12rem;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 40%;
 }
 
@@ -99,7 +110,9 @@ svg:hover {
 }
 
 .header_blocks_search {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
@@ -122,7 +135,9 @@ svg:hover {
 }
 
 .header_blocks_login {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #f3f3f3;
 }
 
@@ -137,14 +152,20 @@ svg:hover {
   border-radius: 10px;
   background-color: #73009f;
   right: 3%;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 3rem;
   z-index: 2;
 }
 
 .header_blocks_authorization:hover, .header_blocks_authorization:active {
   opacity: 1;
+  -webkit-transition: all 0.8s;
   transition: all 0.8s;
   transform: translateY(14.8rem);
   -webkit-transform: translateY(14.8rem);
@@ -154,7 +175,10 @@ svg:hover {
 }
 
 .header_blocks_authorization_form {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 2rem;
 }
 
@@ -174,6 +198,24 @@ svg:hover {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input::-webkit-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input:-ms-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+  text-align: center;
+  color: #8C8493;
+  font-size: 1.8rem;
+}
+
+.header_blocks_authorization_input::-ms-input-placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
   text-align: center;
   color: #8C8493;
   font-size: 1.8rem;
@@ -206,8 +248,10 @@ svg:hover {
 
 .main_catalog_section {
   margin-top: 2.12rem;
-  column-gap: 1.25rem;
-  grid-template-columns: repeat(4, 1fr);
+  -webkit-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
 }
 
 .main_catalog_link {
@@ -224,11 +268,15 @@ svg:hover {
   padding: 1.8rem;
   font-size: 1.8rem;
   color: #f3f3f3;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   line-height: 2rem;
 }
 
 .main_catalog_description:hover {
+  -webkit-transition: all 0.8s;
   transition: all 0.8s;
   opacity: 1;
 }
@@ -249,7 +297,9 @@ svg:hover {
 
 .footer_navigation {
   width: 30%;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .footer_navigation_list {
@@ -258,7 +308,9 @@ svg:hover {
 
 .footer_social {
   width: 40%;
-  align-items: top;
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top;
   padding-top: 2.8rem;
   position: relative;
 }
@@ -296,4 +348,4 @@ svg:hover {
   text-align: center;
   border-radius: 10px;
 }
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=style.css.map */
