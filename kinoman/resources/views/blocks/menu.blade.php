@@ -16,8 +16,8 @@
         
           <a href="#" class="flex header_blocks_search">
             <svg
-              width="40"
-              height="40"
+              width="32"
+              height="29"
               viewBox="0 0 50 50"
               xmlns="http://www.w3.org/2000/svg"
               class="header_blocks_img"
@@ -31,19 +31,25 @@
         
         <div class="flex sp_btw header_blocks_login">
           <p class="flex header_blocks_search">
-            <img src="/img/user.svg" alt="account" class="header_blocks_img" />
-            Войти
-            <div class="flex header_blocks_authorization">
-              <p class="header_blocks_authorization_p">АВТОРИЗАЦИЯ</p>
-              <form action="#" class="flex header_blocks_authorization_form">
-                <input type="text" class="header_blocks_authorization_input" 
-                placeholder="Введите логин"/>
-                <input type="password" name="password" id="password" 
-                class="header_blocks_authorization_input"
-                placeholder="Введите пароль" />
-              </form>
-              <a href="#" class="header_blocks_authorization_link">Нет учетной записи? <span class="grey_text">Зарегистрируйся</span></a>
+            <div onclick="myFunctionMenu()" class="flex dropdown header_blocks_dropdown">
+              <svg width="32" height="29" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" class="header_blocks_img">
+                <path d="M25 0C11.1914 0 0 11.1914 0 25C0 38.8086 11.1914 50 25 50C38.8086 50 50 38.8086 50 25C50 11.1914 38.8086 0 25 0ZM25 12.5C28.8838 12.5 32.0312 15.6484 32.0312 19.5312C32.0312 23.4141 28.8867 26.5625 25 26.5625C21.1172 26.5625 17.9688 23.4141 17.9688 19.5312C17.9688 15.6484 21.1133 12.5 25 12.5ZM25 43.75C19.8311 43.75 15.1465 41.6475 11.748 38.2529C13.3301 34.1699 17.2363 31.25 21.875 31.25H28.125C32.7676 31.25 36.6738 34.168 38.252 38.2529C34.8535 41.6504 30.166 43.75 25 43.75Z"/>
+              </svg>
+              Войти
             </div>
+            <div id="myDropdownMenu" class="flex header_blocks_authorization dropdown_drop_menu">
+                <p class="header_blocks_authorization_p">
+                  АВТОРИЗАЦИЯ
+                </p>
+                <form action="#" class="flex header_blocks_authorization_form">
+                  <input type="text" class="header_blocks_authorization_input" 
+                          placeholder="Введите логин"/>
+                  <input type="password" name="password" id="password" 
+                          class="header_blocks_authorization_input"
+                          placeholder="Введите пароль" />
+                </form>
+                <a href="#" class="header_blocks_authorization_link">Нет учетной записи? <span class="grey_text">Зарегистрируйся</span></a>
+              </div>
           </p>
         </div>
       </div>
