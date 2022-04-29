@@ -38,8 +38,8 @@
       <div class="flex sp_btw footer_social">
         <a href="#">
           <svg
-            width="50"
-            height="50"
+            width="32"
+            height="32"
             viewBox="0 0 50 50"
             xmlns="http://www.w3.org/2000/svg"
             class="footer_call"
@@ -57,8 +57,8 @@
 
         <a href="#">
           <svg
-            width="50"
-            height="49"
+            width="32"
+            height="28"
             viewBox="0 0 50 49"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -69,8 +69,8 @@
         </a>
         <a href="#">
           <svg
-            width="54"
-            height="54"
+            width="32"
+            height="31"
             viewBox="0 0 60 60"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -81,8 +81,8 @@
         </a>
         <a href="#">
           <svg
-            width="60"
-            height="52"
+            width="32"
+            height="32"
             viewBox="0 0 60 52"
             xmlns="http://www.w3.org/2000/svg"
           >
