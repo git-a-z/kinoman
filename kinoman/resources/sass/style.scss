@@ -24,7 +24,7 @@ html {
 }
 
 body {
-    font-family: "Nunito", sans-serif;
+    font-family: $text;
     // letter-spacing: 0.015em;
     overflow-x: hidden;
     line-height: 1;
@@ -61,7 +61,7 @@ svg:hover {
 .container {
     /* 1140px */
     /* max-width: 120rem; */
-    padding: 0 10.8rem;
+    padding: 0 13.8rem;
     margin: 0 auto;
 }
 
@@ -90,28 +90,28 @@ svg:hover {
     align-items: center;
     color: $grey;
     &_logo {
-      margin-right: 3rem;
-      text-align: center;
-      &_img {
-        width: 10rem;
-      }
-      &_p {
-        font-size: 1.25rem;
-        color: $white;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
+        margin-right: 5.25rem;
+        text-align: center;
+        &_img {
+            width: 10rem;
+        }
+        &_p {
+            font-size: 1.25rem;
+            color: $white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
     }
     &_navigation {
-        height: 12.12rem;
+        height: 14.12rem;
         align-items: center;
-        width: 40%;
+        width: 50%;
         &_list {
             width: 100%;
         }
     }
     &_blocks {
-        width: 30%;
+        width: 23%;
         &_search {
             align-items: center;
             position: relative;
@@ -134,14 +134,17 @@ svg:hover {
         }
         &_login {
             align-items: center;
-            color: $white;
+            &:hover {
+                color: $white;
+            }
         }
         &_img {
             margin-right: 1.8rem;
         }
         &_authorization {
             position: absolute;
-            opacity: 0;
+            //opacity: 0;
+            display: none;
             padding: 2rem 1.5rem;
             border-radius: 10px;
             background-color: $lightPurple;
@@ -150,19 +153,12 @@ svg:hover {
             align-items: center;
             gap: 3rem;
             z-index: 2;
-            &:hover,
-            &:active {
-                opacity: 1;
-                transition: all 0.8s;
-                transform: translateY(15.8rem);
-                -webkit-transform: translateY(15.8rem);
-                -moz-transform: translateY(15.8rem);
-                -ms-transform: translateY(15.8rem);
-                -o-transform: translateY(15.8rem);
-}
+            top: 10rem;
+            transition: all 0.8s;
             &_form {
                 flex-direction: column;
                 gap: 2rem;
+                // background-color: green;
             }
             &_p {
                 font-weight: 400;
@@ -195,6 +191,13 @@ svg:hover {
                 margin-bottom: 3rem;
             }
         }
+        &_dropdown {
+            align-items: center;
+            &:hover > svg {
+                color: $white;
+                fill: $white;
+            }
+        }
     }
 }
 
@@ -218,9 +221,14 @@ svg:hover {
     &_link {
         position: relative;
         border-radius: 10px;
+        max-width: 38rem;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
     }
     &_img {
-        max-width: 40rem;
+        width: 100%;
     }
     &_description {
         position: absolute;
@@ -252,14 +260,14 @@ svg:hover {
     font-size: 1.5rem;
     font-weight: 700;
     &_navigation {
-        width: 30%;
+        width: 40% !important;
         align-items: center;
         &_list {
             margin-bottom: 1.2rem;
         }
     }
     &_social {
-        width: 40%;
+        width: 19% !important;
         align-items: top;
         padding-top: 2.8rem;
         position: relative;
@@ -286,7 +294,7 @@ svg:hover {
             display: block;
             position: absolute;
             opacity: 0;
-            background-color: $orangePurple;
+            background-color: $lightPurple;
             font-size: 1.5rem;
             color: $white;
             width: 14.8rem;
@@ -304,10 +312,14 @@ svg:hover {
     outline: 1px solid gold;
   }*/
 
+.dropdown {
+    cursor: pointer;
+}
+
 .movie_blocks {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto 200px;
+    grid-template-rows: auto 15.5rem;
     margin-top: 5rem;
     margin-bottom: 12rem;
     &_text_img {
@@ -317,25 +329,25 @@ svg:hover {
     }
     &_text {
         display: block;
-        font-size: 3.8rem;
-        line-height: 4.5rem;
+        font-size: 3rem;
+        line-height: 4rem;
         font-weight: 700;
-        font-family: "Nunito Sans", sans-serif;
+        // font-family: "Nunito Sans", sans-serif;
     }
     &_text_svg {
-        font-family: "Nunito Sans", sans-serif;
+        // font-family: "Nunito Sans", sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 44px;
         color: $grey;
-        padding-top: 2.5rem;
+        padding-top: 1.5rem;
     }
     &_text_p {
-        font-family: "Nunito Sans", sans-serif;
+        // font-family: "Nunito Sans", sans-serif;
         font-style: normal;
-        font-size: 2.25rem;
-        line-height: 3.5rem;
+        font-size: 1.8rem;
+        line-height: 3rem;
         color: $white;
         padding-top: 1rem;
     }
@@ -374,7 +386,7 @@ svg:hover {
     background: $grey;
     border-radius: 20px;
     margin-top: 5rem;
-    font-family: "Nunito Sans", sans-serif;
+    // font-family: "Nunito Sans", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -396,7 +408,7 @@ svg:hover {
 .movie_drop {
     width: 331px;
     background: $white;
-    font-family: "Nunito Sans", sans-serif;
+    // font-family: "Nunito Sans", sans-serif;
     font-style: normal;
     font-size: 15px;
     text-align: left;
@@ -406,6 +418,7 @@ svg:hover {
     position: absolute;
     z-index: 1;
     border-radius: 10px;
+    flex-direction: column;
     &_a {
         color: $black;
         padding: 3px 5px;
@@ -417,7 +430,10 @@ svg:hover {
     }
 }
 .show {
-    display: block;
+    display: flex;
+    &-menu {
+        display: flex;
+    }
 }
 .movie_box_text {
     width: 1600px;
@@ -426,7 +442,7 @@ svg:hover {
     height: 53px;
     left: 127px;
     top: 95rem;
-    font-family: "Nunito Sans", sans-serif;
+    // font-family: "Nunito Sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
@@ -456,7 +472,7 @@ svg:hover {
         height: 345px;
         left: 13rem;
         top: 105rem;
-        font-family: "Nunito Sans", sans-serif;
+        // font-family: "Nunito Sans", sans-serif;
         font-style: normal;
         font-size: 20px;
         line-height: 5rem;
@@ -464,18 +480,18 @@ svg:hover {
     }
 }
 .movie_widget {
-    width: 500px;
-    height: 200px;
+    width: 33rem;
+    height: 15.5rem;
     background: #280c41;
     border-radius: 10px;
-    font-family: "Nunito Sans", sans-serif;
+    // font-family: "Nunito Sans", sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 16px;
     align-items: center;
     color: #ffffff;
     padding: 3rem 3rem;
-    &_icon {
+        &_icon {
         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
@@ -487,7 +503,7 @@ svg:hover {
     width: 100vw;
     grid-template-columns: repeat(3, 1fr);
     background: #280c41;
-    font-family: "Nunito Sans", sans-serif;
+    // font-family: "Nunito Sans", sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 18px;
@@ -497,7 +513,7 @@ svg:hover {
     margin-bottom: 20rem;
     justify-items: stretch;
     &_p {
-        font-family: "Nunito Sans", sans-serif;
+        // font-family: "Nunito Sans", sans-serif;
         font-style: normal;
         font-weight: 300;
         font-size: 18px;
@@ -546,11 +562,11 @@ svg:hover {
         }
         &_text {
             top: 2rem;
-            left: -8%;
+            left: -18%;
             display: block;
             position: absolute;
             opacity: 0;
-            background-color: $orangePurple;
+            background-color: $lightPurple;
             font-size: 1.5rem;
             color: $white;
             width: 14.8rem;
