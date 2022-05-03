@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
+use App\Models\FilmInfoView;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        $data = DB::select('SELECT * FROM films');
-        return view('catalog', ['data' => $data]);
+        $films = Film::query()
+            ->orderBy('release_year', 'desc')
+            ->paginate(8);
+
+        return view('catalog', ['data' => $films]);
     }
 
-    public function film($id): Factory|View|Application
+    public function film(FilmInfoView $filmInfoView): Factory|View|Application
     {
-        $data = DB::select('SELECT * FROM films_info_view WHERE id = :id',
-            ['id' => $id]);
-
-        if (empty($data)) {
-            return redirect('/catalog');
-        }
-
-        return view('film', ['data' => $data[0]]);
+        return view('film', ['data' => $filmInfoView]);
     }
 }
