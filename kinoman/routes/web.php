@@ -52,5 +52,3 @@ Route::get('/profile', [
     'uses' => 'App\Http\Controllers\ProfileController@index',
     'as' => 'profile'
 ]);
-
-
