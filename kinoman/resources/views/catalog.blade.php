@@ -5,15 +5,14 @@
 @endsection
 
 @section('pageName')
-    @parent Новинки
+    @parent Каталог
 @endsection
 
 @section('content')
-{{--    <main class="content container">--}}
     <main class="content">
         <ul>
             <li class="main_catalog">
-                <h2 class="h2">Новинки</h2>
+                <h2 class="h2-km">Каталог</h2>
                 <div class="grid main_catalog_section">
                     @forelse($data as $item)
                         <a href="{{route('film', $item->id)}}" class="main_catalog_link">

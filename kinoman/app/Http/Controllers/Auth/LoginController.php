@@ -7,6 +7,10 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -28,7 +32,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-//    protected $redirectTo = RouteServiceProvider::HOME;
     protected string $redirectTo = RouteServiceProvider::CATALOG;
 
     /**
@@ -44,5 +47,11 @@ class LoginController extends Controller
     protected function redirectTo(): string|UrlGenerator|Application
     {
         return url($this->redirectTo);
+    }
+
+    public function logout(Request $request): Redirector|Application|RedirectResponse
+    {
+        Auth::logout();
+        return redirect()->back();
     }
 }

@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+/*переменные*/
+:root {
+    --km-text-white: white;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -215,7 +221,7 @@ svg:hover {
     fill: #f3f3f3;
 }
 
-.h2 {
+.h2-km {
     font-size: 2.5rem;
     font-weight: 700;
     color: #f3f3f3;
@@ -359,6 +365,7 @@ svg:hover {
     font-size: 3rem;
     line-height: 4rem;
     font-weight: 700;
+    color: var(--km-text-white);
 }
 
 .movie_blocks_text_svg {
@@ -576,4 +583,9 @@ svg:hover {
 }
 .form-check-input {
     margin-top: 0 !important;
+}
+
+/*collections*/
+.collection-interval {
+    margin: 5rem;
 }

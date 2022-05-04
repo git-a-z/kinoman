@@ -297,25 +297,67 @@ GROUP BY p.person_id;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(255),
-	email VARCHAR(255),
+	name VARCHAR(100),
+	email VARCHAR(100),
 	`password` VARCHAR(255),
 	email_verified_at TIMESTAMP NULL,
 	remember_token VARCHAR(100),
     created_at TIMESTAMP NULL,
     updated_at TIMESTAMP NULL,
-	UNIQUE unique_email(email(255))
+	UNIQUE unique_email(email(100))
 ) COMMENT 'Пользователи';
 
 DROP TABLE IF EXISTS password_resets;
 CREATE TABLE password_resets(
-	email VARCHAR(255),
-	token VARCHAR(255),
+	email VARCHAR(100),
+	token VARCHAR(100),
     created_at TIMESTAMP NULL
 ) COMMENT 'Сброс паролей';
 CREATE INDEX idx_email ON password_resets (email); 
 
+DROP TABLE IF EXISTS collections;
+CREATE TABLE collections(
+	id SMALLINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100),
+	UNIQUE unique_name(name(100))
+) COMMENT 'Коллекции';
+
+INSERT INTO collections (name) VALUES
+	('Новинки'),('Комедии'),('Сериалы'),('Мультфильмы'),('Наше кино'),('Приключения'),
+	('Мистика и ужасы'),('Классика'),('Культовое кино'),('Документальное кино');
+
+DROP TABLE IF EXISTS film_collections;
+CREATE TABLE film_collections (
+	film_id BIGINT UNSIGNED NOT NULL,
+	collection_id SMALLINT UNSIGNED NOT NULL,
+	PRIMARY KEY (film_id, collection_id),
+	FOREIGN KEY (film_id) REFERENCES films(id),
+	FOREIGN KEY (collection_id) REFERENCES collections(id)
+) COMMENT 'Фильм-коллекции';
+
+INSERT INTO film_collections VALUES
+	(1,8),(1,9),
+	(2,7),(2,8),(2,9),
+	(3,9),
+	(4,7),(4,8),(4,9),
+	(5,2),(5,6),(5,7),
+	(6,7),(6,9),
+	(7,9),
+	(8,8),(8,9),
+	(9,6),(9,8),(9,9),
+	(10,2),(10,9);
+
 /**/
+
+/*SELECT 
+	c.name, 
+	f.* 
+FROM film_collections fc
+LEFT JOIN films f ON fc.film_id = f.id
+LEFT JOIN collections c ON fc.collection_id = c.id
+ORDER BY fc.collection_id, f.release_year DESC;*/
+
+
 
 /*SELECT * FROM films;*/
 /*SELECT * FROM persons;*/

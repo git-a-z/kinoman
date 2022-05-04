@@ -5,9 +5,9 @@
             <p class="header_logo_p">Киноман</p>
         </div>
         <ul class="flex sp_btw header_navigation_list">
-            <li><a href="{{route('catalog')}}">Фильмы</a></li>
-            <li><a href="#">Сериалы</a></li>
-            <li><a href="{{route('home')}}">Home</a></li>
+            <li><a href="{{route('catalog')}}">Каталог</a></li>
+            <li><a href="{{route('collections')}}">Коллекции</a></li>
+            <li><a href="{{route('home')}}">🏠</a></li>
         </ul>
     </nav>
     <div class="flex sp_btw header_blocks">
@@ -82,6 +82,9 @@
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('profile') }}">
+                                            Профиль
+                                        </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
