@@ -77,13 +77,6 @@ svg:hover {
     padding-bottom: 16.9rem;
 }
 
-.container {
-    /* 1140px */
-    /* max-width: 120rem; */
-    /*padding: 0 13.8rem;*/
-    /*margin: 0 auto;*/
-}
-
 .flex {
     display: flex;
 }
@@ -201,7 +194,9 @@ svg:hover {
     text-align: center;
 }
 
-.header_blocks_authorization_input::placeholder, .header_blocks_authorization_input:focus, .header_blocks_authorization_input:active {
+.header_blocks_authorization_input::placeholder,
+.header_blocks_authorization_input:focus,
+.header_blocks_authorization_input:active {
     text-align: center;
     color: #8C8493;
     font-size: 1.8rem;
@@ -249,12 +244,11 @@ svg:hover {
     max-width: 38rem;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .main_catalog_img {
     width: 100%;
+    border-radius: 2rem;
 }
 
 .main_catalog_description {
@@ -309,7 +303,6 @@ svg:hover {
 
 .footer_social {
     width: 19% !important;
-    align-items: top;
     padding-top: 2.8rem;
     position: relative;
 }
@@ -427,7 +420,6 @@ svg:hover {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    display: inline-block;
 }
 
 .movie_btn:hover, .movie_btn:focus {
@@ -469,7 +461,6 @@ svg:hover {
 }
 
 .movie_box_text {
-    width: 1600px;
     position: absolute;
     width: 226px;
     height: 53px;
@@ -588,4 +579,58 @@ svg:hover {
 /*collections*/
 .collection-interval {
     margin: 5rem;
+}
+
+/*profile*/
+.profile_container {
+    min-width: 86%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background: #280C41;
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+}
+.profile_container p, .profile_container a {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #8C8493;
+}
+.profile_container a {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #8f69b1;
+}
+.profile_container a:hover {
+    color: #f3f3f3;
+}
+.profile_container h3 {
+    font-weight: 600;
+    font-size: 3rem;
+}
+.profile_container .user_info {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+.profile_container .profile_settings a {
+    font-weight: 600;
+    font-size: 1.5rem;
 }

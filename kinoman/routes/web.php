@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/', [
     'uses' => 'App\Http\Controllers\HomeController@index',
     'as' => 'home'
@@ -32,11 +28,6 @@ Route::get('/collections', [
     'uses' => 'App\Http\Controllers\CollectionController@index',
     'as' => 'collections'
 ]);
-
-//Route::get('/film/{id}', [
-//    'uses' => 'App\Http\Controllers\CatalogController@film',
-//    'as' => 'film'
-//]);
 
 Route::get('/film/{filmInfoView}', [
     'uses' => 'App\Http\Controllers\CatalogController@film',

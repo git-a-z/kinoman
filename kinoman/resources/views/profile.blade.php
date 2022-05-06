@@ -10,7 +10,44 @@
 
 @section('content')
     @isset($data)
-        <h2>{{$data->name}}</h2>
-        <div>{{$data->email}}</div>
+        <div class="position_container">
+            <div class="profile_container">
+                <div class="user_img">
+                    <a href="#">
+                        <img src="img/userfoto.svg">
+                    </a>
+                </div>
+                <div class="user_info">
+                    <h2>{{$data['user']->name}}</h2>
+                    <p>{{$data['user']->email}}</p>
+                    <p>приватный профиль</p>
+                    <p>999 просмотренных фильмов</p>
+                </div>
+                <div class="profile_settings">
+                    <a href="#"> редактировать профиль</a>
+                </div>
+            </div>
+        </div>
+        <div class="user_collections">
+            <main class="content">
+                <ul>
+                    <li class="main_catalog">
+                        @forelse($data['list'] as $key => $collection)
+                            <h2 class="h2-km">{{$key}}</h2>
+                            <div class="grid main_catalog_section">
+                                @forelse($collection as $item)
+                                    @include('blocks.card', ['item' => $item])
+                                @empty
+                                    <p>Кина не будет</p>
+                                @endforelse
+                            </div>
+                            <div class="collection-interval"></div>
+                        @empty
+                            <p>Кина не будет</p>
+                        @endforelse
+                    </li>
+                </ul>
+            </main>
+        </div>
     @endisset
 @endsection
