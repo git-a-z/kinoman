@@ -12,7 +12,6 @@
     <main class="container conteiner_movie wrap">
         <div class="movie_blocks">
             <div class="movie_blocks_text_img">
-
                 <h2 class="movie_blocks_text">{{$data->rus_title}}</h2>
                 <p class="movie_blocks_text_svg">
                     {{$data->release_year}} {{$data->genres}} {{$data->length_in_minutes}} мин. 16+
