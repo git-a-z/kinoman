@@ -9,21 +9,9 @@
 @endsection
 
 @section('content')
-
-    <!-- <h2>{{$data->rus_title}}</h2> -->
-    <!-- <div>({{$data->title}})</div> -->
-    <!-- <div>{{$data->release_year}} год</div> -->
-    <!-- <div>{{$data->length_in_minutes}} мин.</div> -->
-    <!-- <div>{{$data->genres}}</div> -->
-    <!-- <div>Режиссер: {{$data->directors}}</div> -->
-    <!-- <div>Актеры: {{$data->actors}}</div> -->
-    <!-- <img src="{{'../img/'.$data->poster}}"> -->
-    <!-- <div>Описание: {{$data->about}}</div> -->
-    <!-- <a href="/catalog">Назад</a> -->
     <main class="container conteiner_movie wrap">
         <div class="movie_blocks">
             <div class="movie_blocks_text_img">
-
                 <h2 class="movie_blocks_text">{{$data->rus_title}}</h2>
                 <p class="movie_blocks_text_svg">
                     {{$data->release_year}} {{$data->genres}} {{$data->length_in_minutes}} мин. 16+
@@ -39,11 +27,14 @@
                     Rus 16+
                 </p>
                 <p class="movie_blocks_text_p">
-                    {{$data->about}}
+                    {{$data->briefly}}
                 </p>
                 <p class="movie_blocks_text_p">
                     <span class="movie_blocks_text_grey">Режиссёр:</span> {{$data->directors}} <br>
                     <span class="movie_blocks_text_grey">Актёры:</span> {{$data->actors}}
+                </p>
+                <p class="movie_blocks_text_p">
+                    {{$data->about}}
                 </p>
                 <div class="movie_btn" onclick="myFunction()">
                     Добавить в коллекцию
@@ -266,5 +257,4 @@
             </div>
         </section>
     </main>
-
 @endsection

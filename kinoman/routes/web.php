@@ -24,14 +24,14 @@ Route::get('/catalog', [
     'as' => 'catalog'
 ]);
 
+Route::get('/film/{film}', [
+    'uses' => 'App\Http\Controllers\CatalogController@film',
+    'as' => 'film'
+]);
+
 Route::get('/collections', [
     'uses' => 'App\Http\Controllers\CollectionController@index',
     'as' => 'collections'
-]);
-
-Route::get('/film/{filmInfoView}', [
-    'uses' => 'App\Http\Controllers\CatalogController@film',
-    'as' => 'film'
 ]);
 
 Auth::routes();

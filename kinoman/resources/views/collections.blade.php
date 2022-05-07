@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent Каталог
+    @parent Коллекции
 @endsection
 
 @section('pageName')
-    @parent Новинки
+    @parent Коллекции
 @endsection
 
 @section('content')

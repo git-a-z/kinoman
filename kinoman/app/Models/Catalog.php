@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Film extends Model
+class Catalog extends Model
 {
     use HasFactory;
 
-    protected $table = 'film_info_view';
+    protected $table = 'films';
 }
