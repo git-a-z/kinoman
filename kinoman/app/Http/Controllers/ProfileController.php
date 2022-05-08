@@ -18,6 +18,7 @@ class ProfileController extends Controller
 
             $result = DB::select(
                 'SELECT
+                    ul.list_id AS collection_id,
                     l.name,
                     f.*
                 FROM user_lists ul
@@ -33,10 +34,40 @@ class ProfileController extends Controller
             }
 
             return view('profile', [
-                'data' => [
-                    'user' => $user,
-                    'list' => $arr
-                ]
+                'data' => $arr,
+                'user' => $user,
+                'route' => 'profile_list'
+            ]);
+        } else {
+            return view('auth.login');
+        }
+    }
+
+    public function list(int $list_id): Factory|View|Application
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $id = Auth::id();
+
+            $result = DB::table('user_lists as ul')
+                ->join('lists as l', 'ul.list_id', '=', 'l.id')
+                ->join('films as f', 'ul.film_id', '=', 'f.id')
+                ->select('ul.list_id as collection_id','l.name','f.*')
+                ->where([['user_id', '=', $id], ['list_id', '=', $list_id]])
+                ->orderBy('list_id')
+                ->orderBy('release_year', 'DESC')
+                ->paginate(8);
+
+            $arr = [];
+            foreach($result as $row) {
+                $arr[$row->name][] = $row;
+            }
+
+            return view('profileCollection', [
+                'data' => $arr,
+                'user' => $user,
+                'pagination' => $result,
+                'route' => 'profile_list'
             ]);
         } else {
             return view('auth.login');

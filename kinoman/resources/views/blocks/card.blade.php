@@ -1,5 +1,5 @@
 <a href="{{route('film', $item->id)}}" class="main_catalog_link">
-    <img src="{{'img/'.$item->image_path}}" alt="{{$item->rus_title}}"
+    <img src="{{'../img/'.$item->image_path}}" alt="{{$item->rus_title}}"
          class="main_catalog_img"/>
     <div class="flex sp_btw main_catalog_description">
         <div>

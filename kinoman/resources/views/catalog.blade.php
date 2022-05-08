@@ -17,7 +17,6 @@
                     @forelse($data as $item)
                         @include('blocks.card', ['item' => $item])
                     @empty
-                        <p>Кина не будет</p>
                     @endforelse
                 </div>
             </li>

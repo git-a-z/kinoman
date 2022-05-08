@@ -34,6 +34,11 @@ Route::get('/collections', [
     'as' => 'collections'
 ]);
 
+Route::get('/collection/{id}', [
+    'uses' => 'App\Http\Controllers\CollectionController@collection',
+    'as' => 'collection'
+]);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
@@ -42,4 +47,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
 Route::get('/profile', [
     'uses' => 'App\Http\Controllers\ProfileController@index',
     'as' => 'profile'
+]);
+
+Route::get('/profile_list/{id}', [
+    'uses' => 'App\Http\Controllers\ProfileController@list',
+    'as' => 'profile_list'
 ]);

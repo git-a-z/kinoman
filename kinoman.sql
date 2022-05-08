@@ -385,40 +385,25 @@ INSERT INTO film_info (film_id, length_in_minutes, briefly, description, poster_
 CREATE OR REPLACE
 VIEW kinoman.film_info_view AS
 SELECT 
-	fi.film_id AS id, f.title, f.rus_title, f.release_year, f.image_path, fi.length_in_minutes,
-	group_concat(DISTINCT g.name ORDER BY g.name ASC SEPARATOR ', ') AS genres,
-	group_concat(DISTINCT concat(pers.firstname, ' ', pers.lastname) ORDER BY fp.position_id ASC SEPARATOR ', ') AS actors,
-	group_concat(DISTINCT concat(pers2.firstname, ' ', pers2.lastname) ORDER BY pers2.lastname ASC SEPARATOR ', ') AS directors,
-	fi.description AS about,
+	f.*,
+	fi.length_in_minutes,
 	fi.briefly AS briefly,
-	fi.poster_path AS poster
-FROM film_info fi 
-LEFT JOIN films f 			ON fi.film_id = f.id
-LEFT JOIN film_genres fg 	ON fi.film_id = fg.film_id
+	fi.description AS about,	
+	fi.poster_path AS poster,
+	group_concat(DISTINCT g.name ORDER BY g.name ASC SEPARATOR ', ') AS genres,
+	group_concat(DISTINCT concat(p.firstname, ' ', p.lastname) ORDER BY fp.position_id ASC SEPARATOR ', ') AS actors,
+	group_concat(DISTINCT concat(p2.firstname, ' ', p2.lastname) ORDER BY p2.lastname ASC SEPARATOR ', ') AS directors
+FROM films f 
+LEFT JOIN film_info fi 		ON f.id = fi.film_id
+LEFT JOIN film_genres fg 	ON f.id = fg.film_id
 LEFT JOIN genres g 			ON fg.genre_id = g.id
-LEFT JOIN film_persons fp 	ON fi.film_id = fp.film_id AND fp.position_id < 5
-LEFT JOIN persons pers 		ON fp.person_id = pers.id
-LEFT JOIN film_persons fp2 	ON fi.film_id = fp2.film_id AND fp2.position_id = 5
-LEFT JOIN persons pers2 	ON fp2.person_id = pers2.id
-GROUP BY fi.film_id;
+LEFT JOIN film_persons fp 	ON f.id = fp.film_id AND fp.position_id < 5
+LEFT JOIN persons p 		ON fp.person_id = p.id
+LEFT JOIN film_persons fp2 	ON f.id = fp2.film_id AND fp2.position_id = 5
+LEFT JOIN persons p2 		ON fp2.person_id = p2.id
+GROUP BY f.id;
 /*SELECT * FROM film_info_view;*/
-
-CREATE OR REPLACE
-VIEW kinoman.person_info_view AS
-SELECT
-	p.person_id,
-	concat(p1.firstname, ' ', p1.lastname) AS name,
-	p.gender, p1.birthday, p.birthplace,
-	group_concat(DISTINCT concat(f.title,' (',f.release_year,') as ', p3.name) ORDER BY f.release_year ASC SEPARATOR ', ') AS films, 
-	p.photo_path AS photo,
-	p.bio AS bio
-FROM profiles p 
-LEFT JOIN persons p1 		ON p.person_id = p1.id 
-LEFT JOIN film_persons fp	ON p.person_id = fp.person_id
-LEFT JOIN films f			ON fp.film_id = f.id
-LEFT JOIN positions p3		ON fp.position_id = p3.id
-GROUP BY p.person_id;
-/*SELECT * FROM person_info_view;*/
+/*Представления*/
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -530,9 +515,22 @@ CREATE TABLE user_lists (
 ) COMMENT 'Пользователь-списоки-фильмы';
 
 INSERT INTO user_lists (user_id, list_id, film_id) VALUES
-	(1,1,28),(1,1,29),(1,2,31),(1,2,32),(1,2,37),(1,3,23),(1,3,35),(1,4,15);
+	(1,1,28),(1,1,29),
+	(1,2,31),(1,2,32),(1,2,37),(1,2,1),(1,2,2),(1,2,4),(1,2,29),(1,2,38),(1,2,39),
+	(1,3,23),(1,3,35),
+	(1,4,15);
 
 /**/
+
+/*SELECT
+    fc.collection_id,
+    c.name,
+    f.*
+FROM film_collections fc
+LEFT JOIN films f ON fc.film_id = f.id
+LEFT JOIN collections c ON fc.collection_id = c.id
+WHERE fc.collection_id = 1
+ORDER BY fc.collection_id, f.release_year DESC*/
 
 /*SELECT 
 	l.name, 
