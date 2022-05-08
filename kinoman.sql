@@ -308,9 +308,6 @@ INSERT INTO film_genres VALUES
 	(38,10),(38,3),(38,9),(38,1),(38,5),
 	(39,10),(39,3),(39,6);
 
-
-	
-
 DROP TABLE IF EXISTS profiles;
 CREATE TABLE profiles (
 	person_id BIGINT UNSIGNED NOT NULL UNIQUE,

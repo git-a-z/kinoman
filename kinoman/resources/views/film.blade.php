@@ -123,6 +123,7 @@
             </div>
         </div>
         <section class="movie_aside_widget">
+
             <div class="movie_information">
                 <div class="movie_information_p">
                     <h3>Информация</h3>
