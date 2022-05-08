@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/', [
     'uses' => 'App\Http\Controllers\HomeController@index',
     'as' => 'home'
@@ -27,7 +24,32 @@ Route::get('/catalog', [
     'as' => 'catalog'
 ]);
 
-Route::get('/film/{id}', [
+Route::get('/film/{film}', [
     'uses' => 'App\Http\Controllers\CatalogController@film',
     'as' => 'film'
+]);
+
+Route::get('/collections', [
+    'uses' => 'App\Http\Controllers\CollectionController@index',
+    'as' => 'collections'
+]);
+
+Route::get('/collection/{id}', [
+    'uses' => 'App\Http\Controllers\CollectionController@collection',
+    'as' => 'collection'
+]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
+
+Route::get('/profile', [
+    'uses' => 'App\Http\Controllers\ProfileController@index',
+    'as' => 'profile'
+]);
+
+Route::get('/profile_list/{id}', [
+    'uses' => 'App\Http\Controllers\ProfileController@list',
+    'as' => 'profile_list'
 ]);
