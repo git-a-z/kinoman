@@ -63,7 +63,7 @@ class ProfileController extends Controller
                 $arr[$row->name][] = $row;
             }
 
-            return view('profileCollection', [
+            return view('profileList', [
                 'data' => $arr,
                 'user' => $user,
                 'pagination' => $result,

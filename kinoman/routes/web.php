@@ -53,3 +53,8 @@ Route::get('/profile_list/{id}', [
     'uses' => 'App\Http\Controllers\ProfileController@list',
     'as' => 'profile_list'
 ]);
+
+Route::post('/add_del_film_in_list', [
+    'uses' => 'App\Http\Controllers\CatalogController@addDelFilmInList',
+    'as' => 'add_del_film_in_list'
+]);

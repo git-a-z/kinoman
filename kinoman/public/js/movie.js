@@ -24,6 +24,7 @@ window.onclick = function (event) {
         }
     }
 };
+
 window.onclick = function (event) {
     if (!event.target.matches(".header_blocks_dropdown")) {
         let loginBtns = document.getElementsByClassName("dropdown_drop_menu");
@@ -36,3 +37,19 @@ window.onclick = function (event) {
         }
     }
 };
+
+function addDelFilmInList(user_id, film_id, list_id, cur_list_id) {
+    $.ajax({
+        type:"POST",
+        url:"/add_del_film_in_list",
+        data:{
+            user_id:user_id,
+            film_id:film_id,
+            list_id:list_id,
+            cur_list_id:cur_list_id
+        },
+        success:function(response) {
+            $("#film_lists").html(response);
+        }
+    });
+}

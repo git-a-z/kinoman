@@ -308,6 +308,9 @@ INSERT INTO film_genres VALUES
 	(38,10),(38,3),(38,9),(38,1),(38,5),
 	(39,10),(39,3),(39,6);
 
+
+	
+
 DROP TABLE IF EXISTS profiles;
 CREATE TABLE profiles (
 	person_id BIGINT UNSIGNED NOT NULL UNIQUE,
@@ -508,6 +511,8 @@ CREATE TABLE user_lists (
 	user_id BIGINT UNSIGNED NOT NULL,	
 	list_id SMALLINT UNSIGNED NOT NULL,
 	film_id BIGINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
 	PRIMARY KEY (user_id, list_id, film_id),
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (list_id) REFERENCES lists(id),
@@ -522,6 +527,17 @@ INSERT INTO user_lists (user_id, list_id, film_id) VALUES
 
 /**/
 
+/*SELECT 
+	l.*,
+	IFNULL(list_id, 0) AS list_id,
+	1 AS user_id,
+	29 AS film_id
+FROM lists l
+LEFT JOIN user_lists ul ON id = list_id AND user_id = 1 AND film_id = 29
+ORDER BY l.id;*/
+
+/*SELECT * FROM user_lists;*/
+
 /*SELECT
     fc.collection_id,
     c.name,
@@ -533,21 +549,14 @@ WHERE fc.collection_id = 1
 ORDER BY fc.collection_id, f.release_year DESC*/
 
 /*SELECT 
+	ul.list_id as collection_id,
 	l.name, 
 	f.*
 FROM user_lists ul
 LEFT JOIN lists l ON ul.list_id = l.id
 LEFT JOIN films f ON ul.film_id = f.id
 WHERE user_id = 1
-ORDER BY l.id, f.release_year DESC;*/
-
-/*SELECT 
-	c.name, 
-	f.* 
-FROM film_collections fc
-LEFT JOIN films f ON fc.film_id = f.id
-LEFT JOIN collections c ON fc.collection_id = c.id
-ORDER BY fc.collection_id, f.release_year DESC;*/
+ORDER BY list_id, release_year DESC;*/
 
 /*SELECT * FROM films;*/
 /*SELECT * FROM persons;*/
