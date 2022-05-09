@@ -36,16 +36,16 @@
                 <p class="movie_blocks_text_p">
                     {{$data->about}}
                 </p>
-                <div class="movie_btn" onclick="myFunction()">
-                    Добавить в коллекцию
-                    <div class="movie_drop" id="myDropdown">
-                        <a class="movie_drop_a" href="#"> Надо будет посмотреть</a>
-                        <a class="movie_drop_a" href="#"> Любимые</a>
-                        <a class="movie_drop_a" href="#"> Избраное</a>
-                        <a class="movie_drop_a" href="#"> Как мне это развидеть?</a>
-                        <a class="movie_drop_a" href="#"> Новая коллекция</a>
+                @auth
+                    <div class="movie_btn" onclick="myFunction()">
+                        Фильм в списках пользователя
+                        <div class="movie_drop" id="myDropdown">
+                            <div id="film_lists">
+                                @include('blocks.film_lists')
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </div>
             <div class="movie_blocks_img">
                 <img class="movie_blocks_image" src="{{'../img/'.$data->poster}}" alt="{{$data->title}}">
@@ -123,7 +123,6 @@
             </div>
         </div>
         <section class="movie_aside_widget">
-
             <div class="movie_information">
                 <div class="movie_information_p">
                     <h3>Информация</h3>

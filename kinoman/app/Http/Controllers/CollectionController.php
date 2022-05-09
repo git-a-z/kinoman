@@ -27,7 +27,7 @@ class CollectionController extends Controller
         foreach($result as $row) {
             $arr[$row->name][] = $row;
         }
-      
+
         return view('collections', [
             'data' => $arr,
             'route' => 'collection'
