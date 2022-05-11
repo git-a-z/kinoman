@@ -53,3 +53,16 @@ function addDelFilmInList(user_id, film_id, list_id, cur_list_id) {
         }
     });
 }
+
+$('#searchForm').on('submit',function(event){
+    event.preventDefault();
+    let data = $('#searchForm').serializeArray();
+    $.ajax({
+        url: "/filter",
+        type:"POST",
+        data:data,
+        success:function(response){
+            $("#search_results").html(response);
+        },
+    });
+});

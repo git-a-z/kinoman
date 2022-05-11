@@ -527,6 +527,20 @@ INSERT INTO user_lists (user_id, list_id, film_id) VALUES
 
 /**/
 
+/*SELECT * 
+FROM films
+WHERE title LIKE '%The%' 
+OR rus_title LIKE '%The%'
+ORDER BY release_year DESC;*/
+
+/*SELECT DISTINCT 
+	id,
+	concat(firstname, ' ', lastname) AS name
+FROM persons
+LEFT JOIN film_persons ON id = person_id 
+WHERE position_id < 5
+ORDER BY lastname;*/
+
 /*SELECT 
 	l.*,
 	IFNULL(list_id, 0) AS list_id,

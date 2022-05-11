@@ -5,12 +5,7 @@
                 <a href="{{route($route, $collection[0]->collection_id)}}" class="main_catalog_link">
                     <h2 class="h2-km">{{$key}}</h2>
                 </a>
-                <div class="grid main_catalog_section">
-                    @forelse($collection as $item)
-                        @include('blocks.card', ['item' => $item])
-                    @empty
-                    @endforelse
-                </div>
+                @include('blocks.collection', ['collection' => $collection])
                 <div class="collection-interval"></div>
             @empty
             @endforelse
