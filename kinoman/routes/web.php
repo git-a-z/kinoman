@@ -58,3 +58,13 @@ Route::post('/add_del_film_in_list', [
     'uses' => 'App\Http\Controllers\CatalogController@addDelFilmInList',
     'as' => 'add_del_film_in_list'
 ]);
+
+Route::get('/search', [
+    'uses' => 'App\Http\Controllers\SearchController@index',
+    'as' => 'search'
+]);
+
+Route::post('/filter', [
+    'uses' => 'App\Http\Controllers\SearchController@filter',
+    'as' => 'filter'
+]);

@@ -11,7 +11,7 @@
         </ul>
     </nav>
     <div class="flex sp_btw header_blocks">
-        <a href="#" class="flex header_blocks_search">
+        <a href="{{route('search')}}" class="flex header_blocks_search">
             <svg
                 width="32"
                 height="29"
