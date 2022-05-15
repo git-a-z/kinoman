@@ -653,13 +653,11 @@ svg:hover {
     flex-grow: 1;
     display: table-row;
 }
-
 .main_box {
     background-color: #280C41;
     height: 150px;
     /*width: 1200px;*/
     margin-top: 20px;
-
 }
 .main_box_h2 {
     padding-top: 20px;
@@ -686,7 +684,6 @@ svg:hover {
     /*background-color: #8C8493;*/
     margin-top: 5px;
     border: #1f002d;
-
 }
 .main_box_text_input_p {
     padding-top: 15px;
@@ -730,7 +727,7 @@ svg:hover {
     transition: background-color .2s ease-in, box-shadow .2s ease-in;
     transition: background-color .2s ease-in, box-shadow .2s ease-in, -webkit-box-shadow .2s ease-in;
     border-radius: 4px;
-   position: relative;
+    position: relative;
     display: inline-block;
 }
 .main_box_btn:hover, .main_box_btn:focus {
@@ -769,14 +766,12 @@ svg:hover {
 .main_box_drop_a:hover {
     color: #8C8493;
 }
-
 .main_box_btn_summary {
     display: block;
 }
 .main_box_btn_summary::-webkit-details-marker {
     display: none;
 }
-
 .button_year {
     display: block;
 }
