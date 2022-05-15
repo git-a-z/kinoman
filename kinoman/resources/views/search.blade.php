@@ -58,7 +58,7 @@
                                         <div class="main_box_drop">
                                             @forelse($actors as $item)
                                                 <label class="main_box_drop_a">
-                                                    <input type="checkbox" data-genre_id="{{$item->id}}"
+                                                    <input type="checkbox" name="actor_id_{{$item->id}}"
                                                            class="main_box_drop_a_checkbox">
                                                     <p class="main_box_drop_a_p"> {{$item->firstname}} {{$item->lastname}} </p>
                                                 </label>
@@ -80,7 +80,7 @@
                                         <div class="main_box_drop">
                                             @forelse($years as $item)
                                                 <label class="main_box_drop_a">
-                                                    <input type="checkbox" data-genre_id="{{$item['id']}}"
+                                                    <input type="checkbox" name="year_id_{{$item['id']}}"
                                                            class="main_box_drop_a_checkbox">
                                                     <p class="main_box_drop_a_p"> {{$item['name']}} </p>
                                                 </label>

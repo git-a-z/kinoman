@@ -308,9 +308,6 @@ INSERT INTO film_genres VALUES
 	(38,10),(38,3),(38,9),(38,1),(38,5),
 	(39,10),(39,3),(39,6);
 
-
-	
-
 DROP TABLE IF EXISTS profiles;
 CREATE TABLE profiles (
 	person_id BIGINT UNSIGNED NOT NULL UNIQUE,
@@ -526,6 +523,32 @@ INSERT INTO user_lists (user_id, list_id, film_id) VALUES
 	(1,4,15);
 
 /**/
+
+/*select * 
+from `films` 
+where (`title` like '%the%' or `rus_title` like '%the%') 
+	and `release_year` in (2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029) 
+order by `release_year` desc*/
+
+/*SELECT 
+	f.*
+FROM films f
+WHERE release_year IN (2022,2021)
+ORDER BY release_year DESC*/
+
+/*SELECT DISTINCT 
+	f.*
+FROM films f
+LEFT JOIN film_persons fp ON f.id = fp.film_id 
+WHERE fp.person_id IN ('1','4') AND fp.position_id < 5
+ORDER BY release_year DESC*/
+
+/*SELECT DISTINCT 
+	f.*
+FROM films f
+LEFT JOIN film_genres fg ON f.id = fg.film_id
+WHERE fg.genre_id IN ('4','5')
+ORDER BY release_year DESC*/
 
 /*SELECT * 
 FROM films
