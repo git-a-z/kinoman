@@ -20,6 +20,7 @@ class ProfileController extends Controller
                 'SELECT
                     ul.list_id AS collection_id,
                     l.name,
+                    -- f.id AS id,
                     f.*
                 FROM user_lists ul
                 LEFT JOIN lists l ON ul.list_id = l.id

@@ -44,7 +44,7 @@ ul {
 }
 
 a:hover {
-    color: #f3f3f3;
+    color: #f3f3f3 !important;
     transition: all 0.8s;
 }
 
