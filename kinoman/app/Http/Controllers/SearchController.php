@@ -16,15 +16,13 @@ class SearchController extends Controller
         $data = [];
         $genres = Genre::all();
 
-        $actors = DB::select(
-            'SELECT DISTINCT
-                id,
-                firstname,
-                lastname
-            FROM persons
-            LEFT JOIN film_persons ON id = person_id
-            WHERE position_id < 5
-            ORDER BY lastname');
+        $actors = DB::table('persons')
+            ->distinct()
+            ->select('id', 'firstname', 'lastname')
+            ->leftJoin('film_persons', 'id', '=', 'person_id')
+            ->where('position_id', '<', 5)
+            ->orderBy('lastname')
+            ->get();
 
         $years[] = ['id' => 2020, 'name' => '2020-2022'];
         for ($i = 2010; $i >= 1900; $i -= 10) {
@@ -50,6 +48,7 @@ class SearchController extends Controller
         $actors = [];
         $yearStr = 'year_id_';
         $years = [];
+        $result = [];
 
         foreach ($params as $key => $value) {
             if (str_contains($key, $genreStr)) {
@@ -64,55 +63,52 @@ class SearchController extends Controller
             }
         }
 
-        $query = DB::table('films as f')
-            ->distinct()
-            ->select('f.*');
+        if (!empty($searchString) || !empty($genres) || !empty($actors) || !empty($years)) {
+            $query = DB::table('films as f')
+                ->distinct()
+                ->select('f.*');
 
-        if (!empty($genres)) {
-            $query = $query->leftJoin('film_genres as fg', 'f.id', '=', 'fg.film_id');
-        }
+            if (!empty($genres)) {
+                $query = $query->leftJoin('film_genres as fg', 'f.id', '=', 'fg.film_id');
+            }
 
-        if (!empty($actors)) {
-            $query = $query->leftJoin('film_persons as fp', 'f.id', '=', 'fp.film_id');
-        }
+            if (!empty($actors)) {
+                $query = $query->leftJoin('film_persons as fp', 'f.id', '=', 'fp.film_id');
+            }
 
-        if (!empty($searchString)) {
-            $str = "%$searchString%";
-            $query = $query->where(function ($query) use ($str) {
-                $query->where('title', 'like', $str);
-                $query->orWhere('rus_title', 'like', $str);
-            });
-        }
+            if (!empty($searchString)) {
+                $str = "%$searchString%";
+                $query = $query->where(function ($query) use ($str) {
+                    $query->where('title', 'like', $str);
+                    $query->orWhere('rus_title', 'like', $str);
+                });
+            }
 
-        if (!empty($genres)) {
-            $query = $query->where(function ($query) use ($genres) {
-                $query->whereIn('fg.genre_id', $genres);
-            });
-        }
+            if (!empty($genres)) {
+                $query = $query->where(function ($query) use ($genres) {
+                    $query->whereIn('fg.genre_id', $genres);
+                });
+            }
 
-        if (!empty($actors)) {
-            $query = $query->where(function ($query) use ($actors) {
-                $query->whereIn('fp.person_id', $actors);
-                $query->where('fp.position_id', '<', 5);
-            });
-        }
+            if (!empty($actors)) {
+                $query = $query->where(function ($query) use ($actors) {
+                    $query->whereIn('fp.person_id', $actors);
+                    $query->where('fp.position_id', '<', 5);
+                });
+            }
 
-        if (!empty($years)) {
-            sort($years);
-            $query = $query->where(function ($query) use ($years) {
-                $query->whereIn('release_year', $years);
-            });
-        }
+            if (!empty($years)) {
+                sort($years);
+                $query = $query->where(function ($query) use ($years) {
+                    $query->whereIn('release_year', $years);
+                });
+            }
 
-        if (empty($searchString) && empty($genres) && empty($actors) && empty($years)) {
-            $result = [];
-        } else {
             $result = $query
                 ->orderBy('release_year', 'desc')
                 ->get();
         }
 
-        return view('blocks.cardlist', ['cardlist' => $result]);
-        
+        return view('blocks.cards', ['data' => $result]);
     }
 }

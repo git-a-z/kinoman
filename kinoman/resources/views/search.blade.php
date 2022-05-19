@@ -44,7 +44,6 @@
                                             @endforelse
                                         </div>
                                     </details>
-
                                     <details class="main_box_btn">
                                         <summary class="main_box_btn_summary">Актеры
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20px"
@@ -66,7 +65,6 @@
                                             @endforelse
                                         </div>
                                     </details>
-
                                     <details class="main_box_btn">
                                         <summary class="button_year">Годы выхода
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20px"
@@ -95,7 +93,7 @@
                     </form>
                 </div>
                 <div id="search_results">
-                @include('blocks.cardlist', ['cardlist' => $data])
+                    @include('blocks.cards', ['data' => $data])
                 </div>
             </li>
         </ul>

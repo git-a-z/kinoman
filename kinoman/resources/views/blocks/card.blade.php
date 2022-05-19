@@ -1,10 +1,5 @@
-
-<a href="{{route('film', $item->id)}}" draggable="true"
-class="main_catalog_link">
-
-
-    <img src="{{'../img/'.$item->image_path}}" alt="{{$item->rus_title}}"
-         class="main_catalog_img"/>
+<a href="{{route('film', $item->id)}}" draggable="true" class="main_catalog_link">
+    <img src="{{'../img/'.$item->image_path}}" alt="{{$item->rus_title}}" class="main_catalog_img"/>
     <div class="flex sp_btw main_catalog_description">
         <div>
             <svg
@@ -44,8 +39,7 @@ class="main_catalog_link">
         <div>
             <p class="main_catalog_description_h3">Рейтинг: 5.3 {{$item->release_year}}</p>
             <p> {{$item->rus_title}}
-                Профессиональный убийца принимает новое задание от своего
-                загадочного босса. Однако в этот раз всё идет не по плану.
+                — Краткое содержание фильма...
             </p>
         </div>
     </div>

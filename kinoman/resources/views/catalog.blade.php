@@ -13,12 +13,7 @@
         <ul>
             <li class="main_catalog">
                 <h2 class="h2-km">Каталог</h2>
-                <div class="grid main_catalog_section">
-                    @forelse($data as $item)
-                        @include('blocks.card', ['item' => $item])
-                    @empty
-                    @endforelse
-                </div>
+                @include('blocks.cards', ['data' => $data])
             </li>
             {{$data->links("pagination::bootstrap-4")}}
         </ul>
