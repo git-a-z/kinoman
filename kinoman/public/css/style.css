@@ -57,7 +57,7 @@ input:focus {
 }
 
 svg {
-    fill: #8C8493;
+    fill: #8c8493;
 }
 
 svg:hover {
@@ -91,15 +91,15 @@ svg:hover {
 }
 
 .grey_text {
-    color: #8C8493;
+    color: #8c8493;
 }
 
 .header {
-    background-color: #280C41;
+    background-color: #280c41;
     font-size: 2.5rem;
     font-weight: 700;
     align-items: center;
-    color: #8C8493;
+    color: #8c8493;
     padding: 0 5rem;
 }
 
@@ -198,7 +198,7 @@ svg:hover {
 .header_blocks_authorization_input:focus,
 .header_blocks_authorization_input:active {
     text-align: center;
-    color: #8C8493;
+    color: #8c8493;
     font-size: 1.8rem;
 }
 
@@ -241,9 +241,18 @@ svg:hover {
 .main_catalog_link {
     position: relative;
     border-radius: 10px;
-    max-width: 38rem;
+    /* max-width: 38rem; */
+    width: 100%;
+    display: block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+}
+
+.main_catalog_link:hover {
+    transform: translate(0, -10px);
 }
 
 .main_catalog_img {
@@ -276,8 +285,8 @@ svg:hover {
 }
 
 .footer {
-    background-color: #280C41;
-    color: #8C8493;
+    background-color: #280c41;
+    color: #8c8493;
     font-size: 1.5rem;
     font-weight: 700;
     padding: 0 5rem;
@@ -293,7 +302,7 @@ svg:hover {
 }
 
 .footer_navigation {
-   width: 100% !important;
+    width: 100% !important;
     align-items: center;
 }
 
@@ -367,7 +376,7 @@ svg:hover {
     font-weight: 400;
     font-size: 18px;
     line-height: 44px;
-    color: #8C8493;
+    color: #8c8493;
     padding-top: 1.5rem;
 }
 
@@ -380,7 +389,7 @@ svg:hover {
 }
 
 .movie_blocks_text_grey {
-    color: #8C8493;
+    color: #8c8493;
 }
 
 .movie_blocks__thumb_svg {
@@ -407,7 +416,7 @@ svg:hover {
 .movie_btn {
     width: 331px;
     height: 75px;
-    background: #8C8493;
+    background: #8c8493;
     border-radius: 20px;
     margin-top: 5rem;
     font-style: normal;
@@ -423,7 +432,8 @@ svg:hover {
     position: relative;
 }
 
-.movie_btn:hover, .movie_btn:focus {
+.movie_btn:hover,
+.movie_btn:focus {
     background-color: #421867;
 }
 
@@ -450,7 +460,7 @@ svg:hover {
 }
 
 .movie_drop_a:hover {
-    color: #8C8493;
+    color: #8c8493;
 }
 
 .show {
@@ -596,15 +606,16 @@ svg:hover {
     padding-bottom: 1%;
     padding-left: 3%;
     padding-right: 3%;
-    background: #280C41;
+    background: #280c41;
     -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
 }
-.profile_container p, .profile_container a {
+.profile_container p,
+.profile_container a {
     font-weight: 600;
     font-size: 2rem;
-    color: #8C8493;
+    color: #8c8493;
 }
 .profile_container a {
     font-weight: 600;
@@ -636,6 +647,14 @@ svg:hover {
     font-size: 1.5rem;
 }
 
+.fixed-position {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    margin: 0 auto;
+    padding: 0;
+  }
+
 /*контент*/
 .content_main {
     -webkit-box-flex: 1;
@@ -653,8 +672,9 @@ svg:hover {
     flex-grow: 1;
     display: table-row;
 }
+
 .main_box {
-    background-color: #280C41;
+    background-color: #280c41;
     height: 150px;
     /*width: 1200px;*/
     margin-top: 20px;
@@ -693,7 +713,7 @@ svg:hover {
 .main_box_flex_btn {
     width: 140px;
     height: 40px;
-    background-color: #8C8493;
+    background-color: #8c8493;
     text-align: center;
     font-size: 15px;
     cursor: pointer;
@@ -722,15 +742,18 @@ svg:hover {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    -webkit-transition: background-color .2s ease-in, -webkit-box-shadow .2s ease-in;
-    transition: background-color .2s ease-in, -webkit-box-shadow .2s ease-in;
-    transition: background-color .2s ease-in, box-shadow .2s ease-in;
-    transition: background-color .2s ease-in, box-shadow .2s ease-in, -webkit-box-shadow .2s ease-in;
+    -webkit-transition: background-color 0.2s ease-in,
+        -webkit-box-shadow 0.2s ease-in;
+    transition: background-color 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
+    transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+    transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in,
+        -webkit-box-shadow 0.2s ease-in;
     border-radius: 4px;
     position: relative;
     display: inline-block;
 }
-.main_box_btn:hover, .main_box_btn:focus {
+.main_box_btn:hover,
+.main_box_btn:focus {
     -webkit-box-shadow: inset 0 0 0 2px #73009f;
     box-shadow: inset 0 0 0 2px #73009f;
 }
@@ -764,14 +787,16 @@ svg:hover {
     padding-left: 30px;
 }
 .main_box_drop_a:hover {
-    color: #8C8493;
+    color: #8c8493;
 }
+
 .main_box_btn_summary {
     display: block;
 }
 .main_box_btn_summary::-webkit-details-marker {
     display: none;
 }
+
 .button_year {
     display: block;
 }
@@ -783,9 +808,65 @@ svg:hover {
     height: 15px;
     border-radius: 0.25em;
 }
-.main_box_btn_summary_svg{
+.main_box_btn_summary_svg {
     margin-left: 60%;
 }
-.button_year_svg{
+.button_year_svg {
     margin-left: 40%;
+}
+
+/* swiper */
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    display: none;
+}
+
+.arrow {
+    background: rgba(196, 196, 196, 0.7);
+    border-radius: 10px;
+    width: 36px;
+    height: 53px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px 20px;
+    -webkit-filter: brightness(100%);
+}
+
+.arrow:hover {
+    -webkit-filter: brightness(70%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.arrow_left {
+    background-image: url("/img/arrow-left.svg");
+}
+
+.arrow_right {
+    background-image: url("/img/arrow-right.svg");
+    right: 20px !important;
+}
+
+.swiper {
+    overflow: visible !important;
+}
+
+.catalog_link {
+    padding-bottom: 2rem;
+}
+
+.swiper-slide {
+    -webkit-filter: brightness(100%);
+}
+
+.swiper-slide-prev {
+    -webkit-filter: brightness(30%);
+}
+
+.slider_main {
+    min-height: 200px;
 }
