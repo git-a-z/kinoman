@@ -9,8 +9,8 @@ const collectionListElement = document.querySelectorAll(
 const collectionElements = [];
 
 for (const list of collectionListElement) {
-    let newlist = list.querySelectorAll(".main_catalog_link");
-    collectionElements.push(newlist);
+    let newList = list.querySelectorAll(".main_catalog_link");
+    collectionElements.push(newList);
 }
 
 for (const list of collectionElements) {
@@ -71,7 +71,7 @@ collectionListElement.forEach((el) => {
     });
     // console.log('i"m in ');
     el.addEventListener("drop", handleDrop);
-    
+
 });
 
 function addClass() {
@@ -87,42 +87,42 @@ function removeClass() {
     profile.removeAttribute("style");
 }
 
-function findwidthCollectionsBlock() {
+function findWidthCollectionsBlock() {
     let width = collections.clientWidth;
     return width;
 }
 
 function setNewWidth() {
-    let newWidth = findwidthCollectionsBlock() + 2;
+    let newWidth = findWidthCollectionsBlock() + 2;
     let strWidth = String(newWidth);
     profile.style.width = strWidth + "px";
 }
 
 window.addEventListener("scroll", (e) => {
-    let positionY = window.scrollY;
-
-    if (positionY > 115) {
-        let colWidth = String(collections.clientWidth + 2) + "px";
-
-        if (profile.style.width != colWidth) {
-            setNewWidth();
-        }
-        if (profile.classList.contains("fixed-position")) {
-            return;
-        } else {
-            addClass();
-        }
-    } else if (positionY < 115) {
-        if (profile.classList.contains("fixed-position")) {
-            removeClass();
-        } else {
-            return;
-        }
-    }
+    // let positionY = window.scrollY;
+    //
+    // if (positionY > 115) {
+    //     let colWidth = String(collections.clientWidth + 2) + "px";
+    //
+    //     if (profile.style.width != colWidth) {
+    //         setNewWidth();
+    //     }
+    //     if (profile.classList.contains("fixed-position")) {
+    //         return;
+    //     } else {
+    //         addClass();
+    //     }
+    // } else if (positionY < 115) {
+    //     if (profile.classList.contains("fixed-position")) {
+    //         removeClass();
+    //     } else {
+    //         return;
+    //     }
+    // }
 });
 
 function handleDrop(e) {
-    console.log('i"m in handledrop');
+    // console.log('i"m in handledrop');
     e.preventDefault(); // stops the browser from redirecting.
     return false;
 }

@@ -1,9 +1,9 @@
 const sliderMain = new Swiper(".slider_main", {
     // freeMode: true,
     // centeredSlides: true,
-    // mousewheel: true,
-    parallax: true,
-    loop: true,
+    mousewheel: true,
+    parallax: false,
+    loop: false,
     loopAdditionalSlides: 0,
     breakpoints: {
         0: {
@@ -16,11 +16,11 @@ const sliderMain = new Swiper(".slider_main", {
         },
     },
     slidesPerGroup: 4,
-    speed: 1100,
+    speed: 1000,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
     },
 });
 
-console.log('mm');
+// console.log('mm');

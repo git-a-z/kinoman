@@ -29,8 +29,7 @@
             </div>
         </div>
         <div class="user_collections">
-            
-            @include('blocks.profilecollections', ['$data' => $data, 'route' => $route])
+            @include('blocks.lists', ['data' => $data, 'route' => $route])
         </div>
     @endisset
 @endsection

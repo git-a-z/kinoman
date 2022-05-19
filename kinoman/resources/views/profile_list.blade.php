@@ -9,6 +9,6 @@
 @endsection
 
 @section('content')
-    @include('blocks.collections', ['data' => $data, 'route' => $route])
+    @include('blocks.lists', ['data' => $data, 'route' => $route])
     {{$pagination->links("pagination::bootstrap-4")}}
 @endsection
