@@ -95,7 +95,7 @@
                     </form>
                 </div>
                 <div id="search_results">
-                    @include('blocks.collection', ['collection' => $data])
+                @include('blocks.cardlist', ['cardlist' => $data])
                 </div>
             </li>
         </ul>

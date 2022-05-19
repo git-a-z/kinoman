@@ -112,6 +112,7 @@ class SearchController extends Controller
                 ->get();
         }
 
-        return view('blocks.collection', ['collection' => $result]);
+        return view('blocks.cardlist', ['cardlist' => $result]);
+        
     }
 }
