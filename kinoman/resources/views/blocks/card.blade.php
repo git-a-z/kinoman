@@ -1,11 +1,15 @@
-<a href="{{route('film', $item->id)}}" class="main_catalog_link">
+
+<a href="{{route('film', $item->id)}}" draggable="true"
+class="main_catalog_link">
+
+
     <img src="{{'../img/'.$item->image_path}}" alt="{{$item->rus_title}}"
          class="main_catalog_img"/>
     <div class="flex sp_btw main_catalog_description">
         <div>
             <svg
-                width="40"
-                height="35"
+                width="30"
+                height="25"
                 viewBox="0 0 40 35"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -15,8 +19,8 @@
                 />
             </svg>
             <svg
-                width="41"
-                height="41"
+                width="31"
+                height="31"
                 viewBox="0 0 37 41"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -26,8 +30,8 @@
                 />
             </svg>
             <svg
-                width="30"
-                height="40"
+                width="20"
+                height="30"
                 viewBox="0 0 30 40"
                 xmlns="http://www.w3.org/2000/svg"
             >

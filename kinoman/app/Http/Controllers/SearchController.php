@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
 use App\Models\Genre;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,21 +26,11 @@ class SearchController extends Controller
             WHERE position_id < 5
             ORDER BY lastname');
 
-        $years = [
-            ['id' => 2020, 'name' => '2020-2022'],
-            ['id' => 2010, 'name' => '2010-2019'],
-            ['id' => 2000, 'name' => '2000-2009'],
-            ['id' => 1990, 'name' => '1990-1999'],
-            ['id' => 1980, 'name' => '1980-1989'],
-            ['id' => 1970, 'name' => '1970-1979'],
-            ['id' => 1960, 'name' => '1960-1969'],
-            ['id' => 1950, 'name' => '1950-1959'],
-            ['id' => 1940, 'name' => '1940-1949'],
-            ['id' => 1930, 'name' => '1930-1939'],
-            ['id' => 1920, 'name' => '1920-1929'],
-            ['id' => 1910, 'name' => '1910-1919'],
-            ['id' => 1900, 'name' => '1900-1909'],
-        ];
+        $years[] = ['id' => 2020, 'name' => '2020-2022'];
+        for ($i = 2010; $i >= 1900; $i -= 10) {
+            $lastYear = $i + 9;
+            $years[] = ['id' => $i, 'name' => "$i-$lastYear"];
+        }
 
         return view('search', [
             'data' => $data,
@@ -53,26 +42,77 @@ class SearchController extends Controller
 
     public function filter(Request $request): Factory|View|Application
     {
-        $content = $request->getContent();
-        parse_str($content, $params);
-
-        $result = [];
+        $params = $request->all();
         $searchString = $params['searchString'];
+        $genreStr = 'genre_id_';
+        $genres = [];
+        $actorStr = 'actor_id_';
+        $actors = [];
+        $yearStr = 'year_id_';
+        $years = [];
+
+        foreach ($params as $key => $value) {
+            if (str_contains($key, $genreStr)) {
+                $genres[] = str_replace($genreStr, '', $key);
+            }
+            if (str_contains($key, $actorStr)) {
+                $actors[] = str_replace($actorStr, '', $key);
+            }
+            if (str_contains($key, $yearStr)) {
+                $startYear = str_replace($yearStr, '', $key);
+                $years = array_merge($years, range($startYear, $startYear + 9));
+            }
+        }
+
+        $query = DB::table('films as f')
+            ->distinct()
+            ->select('f.*');
+
+        if (!empty($genres)) {
+            $query = $query->leftJoin('film_genres as fg', 'f.id', '=', 'fg.film_id');
+        }
+
+        if (!empty($actors)) {
+            $query = $query->leftJoin('film_persons as fp', 'f.id', '=', 'fp.film_id');
+        }
 
         if (!empty($searchString)) {
             $str = "%$searchString%";
-            $result = DB::select(
-            "SELECT *
-                FROM films
-                WHERE title LIKE :str1
-                OR rus_title LIKE :str2
-                ORDER BY release_year DESC", [
-                    ':str1' => $str,
-                    ':str2' => $str,
-                ]
-            );
+            $query = $query->where(function ($query) use ($str) {
+                $query->where('title', 'like', $str);
+                $query->orWhere('rus_title', 'like', $str);
+            });
         }
 
-        return view('blocks.collection', ['collection' => $result]);;
+        if (!empty($genres)) {
+            $query = $query->where(function ($query) use ($genres) {
+                $query->whereIn('fg.genre_id', $genres);
+            });
+        }
+
+        if (!empty($actors)) {
+            $query = $query->where(function ($query) use ($actors) {
+                $query->whereIn('fp.person_id', $actors);
+                $query->where('fp.position_id', '<', 5);
+            });
+        }
+
+        if (!empty($years)) {
+            sort($years);
+            $query = $query->where(function ($query) use ($years) {
+                $query->whereIn('release_year', $years);
+            });
+        }
+
+        if (empty($searchString) && empty($genres) && empty($actors) && empty($years)) {
+            $result = [];
+        } else {
+            $result = $query
+                ->orderBy('release_year', 'desc')
+                ->get();
+        }
+
+        return view('blocks.cardlist', ['cardlist' => $result]);
+        
     }
 }
