@@ -68,3 +68,8 @@ Route::post('/filter', [
     'uses' => 'App\Http\Controllers\SearchController@filter',
     'as' => 'filter'
 ]);
+
+Route::post('/move_film_from_list_to_list', [
+    'uses' => 'App\Http\Controllers\ProfileController@moveFilmFromListToList',
+    'as' => 'move_film_from_list_to_list'
+]);

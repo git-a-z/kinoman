@@ -13,7 +13,7 @@
         <ul>
             <li class="main_catalog">
                 <h2 class="h2-km">Каталог</h2>
-                @include('blocks.cards', ['data' => $data])
+                @include('blocks.cards_single', ['data' => $data])
             </li>
             {{$data->links("pagination::bootstrap-4")}}
         </ul>

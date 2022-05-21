@@ -38,15 +38,15 @@ window.onclick = function (event) {
     }
 };
 
-function addDelFilmInList(user_id, film_id, list_id, cur_list_id) {
+function addDelFilmInList(user_id, film_id, list_id, new_list_id) {
     $.ajax({
         type:"POST",
         url:"/add_del_film_in_list",
         data:{
-            user_id:user_id,
-            film_id:film_id,
-            list_id:list_id,
-            cur_list_id:cur_list_id
+            user_id: user_id,
+            film_id: film_id,
+            list_id: list_id,
+            new_list_id: new_list_id
         },
         success:function(response) {
             $("#film_lists").html(response);
@@ -60,7 +60,7 @@ $('#searchForm').on('submit',function(event){
     $.ajax({
         url: "/filter",
         type:"POST",
-        data:data,
+        data: data,
         success:function(response){
             $("#search_results").html(response);
         },

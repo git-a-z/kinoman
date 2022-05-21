@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
-use App\Models\Catalog;
-use App\Models\UserList;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -16,7 +14,9 @@ class CatalogController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        $films = Catalog::query()
+        $films = DB::table('films as f')
+            ->select('f.*')
+            ->selectRaw('0 as collection_id')
             ->orderBy('release_year', 'desc')
             ->paginate(8);
 
@@ -66,7 +66,7 @@ class CatalogController extends Controller
         $user_id = $request->user_id;
         $film_id = $request->film_id;
         $list_id = $request->list_id;
-        $cur_list_id = $request->cur_list_id;
+        $new_list_id = $request->new_list_id;
 
         if ($list_id) {
             DB::table('user_lists')
@@ -75,11 +75,10 @@ class CatalogController extends Controller
                 ->where('list_id', $list_id)
                 ->delete();
         } else {
-            $userList = new UserList;
-            $userList->user_id = $user_id;
-            $userList->film_id = $film_id;
-            $userList->list_id = $cur_list_id ;
-            $userList->save();
+            DB::table('user_lists')
+                ->insertOrIgnore(
+                    ['user_id' => $user_id, 'film_id' => $film_id, 'list_id' => $new_list_id]
+                );
         }
 
         $lists = $this->getLists($film_id);

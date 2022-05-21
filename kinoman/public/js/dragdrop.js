@@ -2,10 +2,7 @@
 
 const profile = document.querySelector(".position_container");
 const collections = document.querySelector(".user_collections");
-
-const collectionListElement = document.querySelectorAll(
-    `.main_catalog_section`
-);
+const collectionListElement = document.querySelectorAll(".main_catalog_section");
 const collectionElements = [];
 
 for (const list of collectionListElement) {
@@ -24,18 +21,16 @@ collectionListElement.forEach((el) => {
 
     el.addEventListener(`dragend`, (evt) => {
         evt.target.classList.remove(`selected`);
+        dragend(evt);
     });
 });
 
 const getNextElement = (cursorPosition, currentElement) => {
     const currentElementCoord = currentElement.getBoundingClientRect();
-    const currentElementCenter =
-        currentElementCoord.y + currentElementCoord.height / 2;
-
-    const nextElement =
-        cursorPosition < currentElementCenter
-            ? currentElement
-            : currentElement.nextElementSibling;
+    const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+    const nextElement = cursorPosition < currentElementCenter
+        ? currentElement
+        : currentElement.nextElementSibling;
 
     return nextElement;
 };
@@ -43,21 +38,16 @@ const getNextElement = (cursorPosition, currentElement) => {
 collectionListElement.forEach((el) => {
     el.addEventListener(`dragover`, (evt) => {
         evt.preventDefault();
-
         const activeElement = document.querySelector(`.selected`);
         const currentElementChildren = evt.target;
-
         let currentElement = currentElementChildren.parentElement;
         let parentBlock = currentElement.parentElement;
 
         if (currentElement.classList.contains("main_catalog")) {
-            let newParentBlock = currentElement.querySelector(
-                ".main_catalog_section"
-            );
+            let newParentBlock = currentElement.querySelector(".main_catalog_section");
             newParentBlock.prepend(activeElement);
         } else if (currentElement.classList.contains(`main_catalog_link`)) {
-            const isMoveable =
-                activeElement !== currentElement &&
+            const isMoveable = activeElement !== currentElement &&
                 currentElement.classList.contains(`main_catalog_link`);
 
             if (!isMoveable) {
@@ -65,19 +55,16 @@ collectionListElement.forEach((el) => {
             }
 
             const nextElement = getNextElement(evt.clientY, currentElement);
-
             parentBlock.insertBefore(activeElement, nextElement);
         }
     });
-    // console.log('i"m in ');
-    el.addEventListener("drop", handleDrop);
 
+    el.addEventListener("drop", handleDrop);
 });
 
 function addClass() {
     profile.classList.add("fixed-position");
     collections.classList.add("collections_margin");
-
     setNewWidth();
 }
 
@@ -88,8 +75,7 @@ function removeClass() {
 }
 
 function findWidthCollectionsBlock() {
-    let width = collections.clientWidth;
-    return width;
+    return collections.clientWidth;
 }
 
 function setNewWidth() {
@@ -122,7 +108,36 @@ window.addEventListener("scroll", (e) => {
 });
 
 function handleDrop(e) {
-    // console.log('i"m in handledrop');
+    // console.log('handleDrop');
     e.preventDefault(); // stops the browser from redirecting.
     return false;
+}
+
+function dragend(e) {
+    // console.log('dragend');
+    let card = e.path.find(el => el.id && el.id.includes('film_id_'));
+
+    if (card !== undefined) {
+        let new_list_id = e.currentTarget.id.replace(/list_id_/, '');
+        let old_list_id = card.getAttribute('data-list_id');
+
+        if (new_list_id !== old_list_id) {
+            let film_id = card.id.replace(/film_id_/, '');
+            card.setAttribute('data-list_id', new_list_id);
+            // console.log('new=' + new_list_id, ' film=' + film_id + ' ', 'old=' + old_list_id);
+
+            $.ajax({
+                type: "POST",
+                url: "/move_film_from_list_to_list",
+                data: {
+                    new_list_id: new_list_id,
+                    film_id: film_id,
+                    old_list_id: old_list_id
+                },
+                success: function (response) {
+                    return response;
+                }
+            });
+        }
+    }
 }

@@ -66,7 +66,8 @@ class SearchController extends Controller
         if (!empty($searchString) || !empty($genres) || !empty($actors) || !empty($years)) {
             $query = DB::table('films as f')
                 ->distinct()
-                ->select('f.*');
+                ->select('f.*')
+                ->selectRaw('0 as collection_id');
 
             if (!empty($genres)) {
                 $query = $query->leftJoin('film_genres as fg', 'f.id', '=', 'fg.film_id');
@@ -109,6 +110,6 @@ class SearchController extends Controller
                 ->get();
         }
 
-        return view('blocks.cards', ['data' => $result]);
+        return view('blocks.cards_single', ['data' => $result]);
     }
 }

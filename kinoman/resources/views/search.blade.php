@@ -93,7 +93,7 @@
                     </form>
                 </div>
                 <div id="search_results">
-                    @include('blocks.cards', ['data' => $data])
+                    @include('blocks.cards_single', ['data' => $data])
                 </div>
             </li>
         </ul>

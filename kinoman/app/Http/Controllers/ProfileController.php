@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,6 @@ class ProfileController extends Controller
                 'SELECT
                     ul.list_id AS collection_id,
                     l.name,
-                    -- f.id AS id,
                     f.*
                 FROM user_lists ul
                 LEFT JOIN lists l ON ul.list_id = l.id
@@ -72,6 +72,31 @@ class ProfileController extends Controller
             ]);
         } else {
             return view('auth.login');
+        }
+    }
+
+    public function moveFilmFromListToList(Request $request): int
+    {
+        if (Auth::check()) {
+            $user_id = Auth::id();
+            $new_list_id = $request->new_list_id;
+            $film_id = $request->film_id;
+            $old_list_id = $request->old_list_id;
+
+            DB::table('user_lists')
+                ->where('user_id', $user_id)
+                ->where('film_id', $film_id)
+                ->where('list_id', $old_list_id)
+                ->delete();
+
+            DB::table('user_lists')
+                ->insertOrIgnore(
+                    ['user_id' => $user_id, 'film_id' => $film_id, 'list_id' => $new_list_id]
+                );
+
+            return $new_list_id;
+        } else {
+            return 0;
         }
     }
 }
