@@ -54,11 +54,6 @@ Route::get('/profile_list/{id}', [
     'as' => 'profile_list'
 ]);
 
-Route::post('/add_del_film_in_list', [
-    'uses' => 'App\Http\Controllers\CatalogController@addDelFilmInList',
-    'as' => 'add_del_film_in_list'
-]);
-
 Route::get('/search', [
     'uses' => 'App\Http\Controllers\SearchController@index',
     'as' => 'search'
@@ -69,7 +64,17 @@ Route::post('/filter', [
     'as' => 'filter'
 ]);
 
+Route::post('/add_del_film_in_list', [
+    'uses' => 'App\Http\Controllers\CatalogController@addDelFilmInList',
+    'as' => 'add_del_film_in_list'
+]);
+
 Route::post('/move_film_from_list_to_list', [
     'uses' => 'App\Http\Controllers\ProfileController@moveFilmFromListToList',
     'as' => 'move_film_from_list_to_list'
+]);
+
+Route::post('/add_del_film_in_favorites', [
+    'uses' => 'App\Http\Controllers\ProfileController@addDelFilmInFavorites',
+    'as' => 'add_del_film_in_favorites'
 ]);
