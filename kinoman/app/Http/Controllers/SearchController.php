@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -68,6 +69,35 @@ class SearchController extends Controller
                 ->distinct()
                 ->select('f.*')
                 ->selectRaw('0 as collection_id');
+
+            if (Auth::check()) {
+                $user_id = Auth::id();
+                $list1_id = 1;
+                $list2_id = 2;
+                $list3_id = 3;
+
+                $query = $query
+                    ->selectRaw('IFNULL(ul1.list_id, 0) AS is_chosen')
+                    ->leftJoin('user_lists as ul1', function ($leftJoin) use ($user_id, $list1_id) {
+                        $leftJoin->on('id', '=', 'ul1.film_id')
+                            ->where('ul1.user_id', '=', $user_id)
+                            ->where('ul1.list_id', '=', $list1_id);
+                    });
+                $query = $query
+                    ->selectRaw('IFNULL(ul2.list_id, 0) AS is_favorite')
+                    ->leftJoin('user_lists as ul2', function ($leftJoin) use ($user_id, $list2_id) {
+                        $leftJoin->on('id', '=', 'ul2.film_id')
+                            ->where('ul2.user_id', '=', $user_id)
+                            ->where('ul2.list_id', '=', $list2_id);
+                    });
+                $query = $query
+                    ->selectRaw('IFNULL(ul3.list_id, 0) AS is_must_see')
+                    ->leftJoin('user_lists as ul3', function ($leftJoin) use ($user_id, $list3_id) {
+                        $leftJoin->on('id', '=', 'ul3.film_id')
+                            ->where('ul3.user_id', '=', $user_id)
+                            ->where('ul3.list_id', '=', $list3_id);
+                    });
+            }
 
             if (!empty($genres)) {
                 $query = $query->leftJoin('film_genres as fg', 'f.id', '=', 'fg.film_id');
