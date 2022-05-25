@@ -136,12 +136,13 @@ svg:hover {
 }
 
 .header_blocks {
-    width: 23%;
+    width:38%;
 }
 
 .header_blocks_search {
     align-items: center;
     position: relative;
+    padding-left: 5%;
 }
 
 .header_blocks_search:hover {
@@ -574,12 +575,27 @@ svg:hover {
     display: flex;
     padding-left: 0;
     list-style: none;
-    font-size: x-large;
+    /*font-size: x-large;*/
     justify-content: center;
-    margin: 30px;
+    margin: 45px;
+    color: #f3f3f3;
+    background-color: #1f002d;
+    font-size: 28px;
+}
+.pagination li:focus {
+    background-color: #8C8493;
+    border: 1px solid #240935;
+    color: #f3f3f3;
+}
+.pagination a{
+    color: #f3f3f3;
+    background-color: #1f002d;
+    border: 1px solid #1f002d;
 }
 
-/*login/register form*/
+
+
+    /*login/register form*/
 .dropdown-item,
 .form-control,
 .container,
@@ -594,6 +610,19 @@ svg:hover {
 .form-check-input {
     margin-top: 0 !important;
 }
+
+.nav-item{
+    margin-right: 1rem;
+    color: #8C8493;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.header_blocks_img_svg{
+    margin-right: 1rem;
+    margin-top: 0.40rem;
+}
+
 
 /*collections*/
 .collection-interval {
@@ -855,11 +884,12 @@ svg:hover {
 .arrow {
     background: rgba(196, 196, 196, 0.7);
     border-radius: 10px;
-    width: 36px;
-    height: 53px;
+    width: 40px;
+    /*height: 53px;*/
+    height: 150px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 15px 20px;
+    background-size: 25px 25px;
     -webkit-filter: brightness(100%);
 }
 
@@ -878,7 +908,8 @@ svg:hover {
 
 .arrow_right {
     background-image: url("/img/arrow-right.svg");
-    right: 20px !important;
+    /*right: 20px !important;*/
+    right: 5px !important;
 }
 
 .swiper {
