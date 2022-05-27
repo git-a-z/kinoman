@@ -42,13 +42,20 @@
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
+                                    <svg class="header_blocks_img_svg" width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25 0C11.1914 0 0 11.1914 0 25C0 38.8086 11.1914 50 25 50C38.8086 50 50 38.8086
+                                            50 25C50 11.1914 38.8086 0 25 0ZM25 12.5C28.8838 12.5 32.0312 15.6484 32.0312 19.5312C32.0312
+                                            23.4141 28.8867 26.5625 25 26.5625C21.1172 26.5625 17.9688 23.4141 17.9688 19.5312C17.9688 15.6484
+                                            21.1133 12.5 25 12.5ZM25 43.75C19.8311 43.75 15.1465 41.6475 11.748 38.2529C13.3301 34.1699 17.2363
+                                            31.25 21.875 31.25H28.125C32.7676 31.25 36.6738 34.168 38.252 38.2529C34.8535 41.6504 30.166 43.75 25 43.75Z"/>
+                                    </svg>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
                                     </li>
                                 @endif
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                     </li>
                                 @endif
                             @else
@@ -59,12 +66,12 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('profile') }}">
-                                            Профиль
+                                           Профиль пользователя
                                         </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Выйти') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                               class="d-none">
