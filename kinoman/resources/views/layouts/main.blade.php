@@ -12,8 +12,9 @@
 
     <!-- Scripts -->
 {{--    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>--}}
+   
     <script src="{{ asset('js/swiper.js') }}" defer></script>
-    <script src="{{ asset('js/slider.js') }}" defer></script>
+    <script src="{{ asset('js/slider.js') }}" defer></script>     
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/movie.js') }}" defer></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
