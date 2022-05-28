@@ -1,5 +1,5 @@
 <!-- <div class="grid main_catalog_section"> -->
-<div class="test">
+<div>
     <div class="swiper slider slider_main">
         <div class="swiper-wrapper slider__wrapper">
             @forelse($collection as $item)

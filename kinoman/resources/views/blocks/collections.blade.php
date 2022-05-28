@@ -1,5 +1,7 @@
 <main class="content">
-    <ul>
+    <div style="position: relative;">
+        <div id="load"></div>
+    <ul id="test">
         <li class="main_catalog">
             @forelse($data as $key => $collection)
                 <a href="{{route($route, $collection[0]->collection_id)}}" class="catalog_link">
@@ -11,4 +13,7 @@
             @endforelse
         </li>
     </ul>
+    </div>
+    
 </main>
+

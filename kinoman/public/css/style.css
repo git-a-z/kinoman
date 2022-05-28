@@ -273,6 +273,7 @@ svg:hover {
     opacity: 0;
     background: rgba(15, 21, 36, 0.7);
     height: 100%;
+    width: 100%;
     padding: 1.8rem;
     font-size: 1.8rem;
     color: #f3f3f3;
@@ -930,4 +931,12 @@ svg:hover {
 
 .slider_main {
     min-height: 200px;
+}
+
+#load {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1f002d;;
+    z-index: 3;
 }
