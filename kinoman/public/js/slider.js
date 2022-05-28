@@ -1,3 +1,10 @@
+$(function(){
+    $('#load').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 400);
+    $('#load').promise().done(function(){
+        $('#load').css('zIndex',-1);
+    });
+  });
+
 const sliderMain = new Swiper(".slider_main", {
     // freeMode: true,
     // centeredSlides: true,
@@ -6,7 +13,11 @@ const sliderMain = new Swiper(".slider_main", {
     loop: false,
     loopAdditionalSlides: 0,
     breakpoints: {
-        0: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        480: {
             slidesPerView: 4,
             spaceBetween: 20,
         },
@@ -22,5 +33,3 @@ const sliderMain = new Swiper(".slider_main", {
         prevEl: ".swiper-button-prev",
     },
 });
-
-// console.log('mm');
