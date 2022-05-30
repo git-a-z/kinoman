@@ -110,7 +110,7 @@ svg:hover {
 }
 
 .header_logo {
-    margin-right: 5.25rem;
+    margin-right: 12.25rem;
     text-align: center;
 }
 
@@ -132,11 +132,14 @@ svg:hover {
 }
 
 .header_navigation_list {
-    width: 100%;
+    /* width: 100%; */
+    gap: 12.25rem;
 }
 
 .header_blocks {
-    width:38%;
+    width: 38%;
+    gap: 12.25rem;
+    justify-content: end;
 }
 
 .header_blocks_search {
@@ -240,7 +243,7 @@ svg:hover {
 
 .main_catalog_section {
     margin-top: 2.12rem;
-    column-gap: 1.25rem;
+    column-gap: 1.8rem;
     row-gap: 8.25rem;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -259,7 +262,12 @@ svg:hover {
 }
 
 .main_catalog_link:hover {
-    transform: translate(0, -10px);
+    /*transform: translate(0, -10px);
+    */transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
 
 .main_catalog_img {
@@ -309,13 +317,22 @@ svg:hover {
     height: 16.9rem;
 }
 
+.footer_logo {
+    text-align: center;
+}
+
 .footer_navigation {
     width: 100% !important;
     align-items: center;
+    gap: 7.25rem;
 }
 
 .footer_navigation_list {
     margin-bottom: 1.2rem;
+}
+
+.footer_navigation_lists {
+    gap: 12.25rem;
 }
 
 .footer_social {
@@ -330,9 +347,23 @@ svg:hover {
     position: relative;
 }
 
+.footer_call:hover ~ div {
+    opacity: 1;
+    transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transform: translateY(6.1rem);
+    -webkit-transform: translateY(6.1rem);
+    -moz-transform: translateY(6.1rem);
+    -ms-transform: translateY(6.1rem);
+    -o-transform: translateY(6.1rem);
+  }
+
 .footer_call_text {
     top: 2rem;
-    left: -8%;
+    left: -17%;
     display: block;
     position: absolute;
     opacity: 0;
@@ -584,19 +615,17 @@ svg:hover {
     font-size: 28px;
 }
 .pagination li:focus {
-    background-color: #8C8493;
+    background-color: #8c8493;
     border: 1px solid #240935;
     color: #f3f3f3;
 }
-.pagination a{
+.pagination a {
     color: #f3f3f3;
     background-color: #1f002d;
     border: 1px solid #1f002d;
 }
 
-
-
-    /*login/register form*/
+/*login/register form*/
 .dropdown-item,
 .form-control,
 .container,
@@ -612,18 +641,17 @@ svg:hover {
     margin-top: 0 !important;
 }
 
-.nav-item{
+.nav-item {
     margin-right: 1rem;
-    color: #8C8493;
+    color: #8c8493;
     font-size: 2.5rem;
     font-weight: 700;
 }
 
-.header_blocks_img_svg{
+.header_blocks_img_svg {
     margin-right: 1rem;
-    margin-top: 0.40rem;
+    margin-top: 0.4rem;
 }
-
 
 /*collections*/
 .collection-interval {
@@ -793,11 +821,11 @@ svg:hover {
     -ms-flex-align: center;
     align-items: center;
     -webkit-transition: background-color 0.2s ease-in,
-    -webkit-box-shadow 0.2s ease-in;
+        -webkit-box-shadow 0.2s ease-in;
     transition: background-color 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
     transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
     transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in,
-    -webkit-box-shadow 0.2s ease-in;
+        -webkit-box-shadow 0.2s ease-in;
     border-radius: 4px;
     position: relative;
     display: inline-block;
@@ -887,11 +915,12 @@ svg:hover {
     border-radius: 10px;
     width: 40px;
     /*height: 53px;*/
-    height: 150px;
+    height: 80%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25px 25px;
     -webkit-filter: brightness(100%);
+    opacity: 0;
 }
 
 .arrow:hover {
@@ -933,10 +962,51 @@ svg:hover {
     min-height: 200px;
 }
 
+.slider_main:hover > .collections-pagination,
+.slider_main:hover > .arrow {
+    opacity: 1;
+}
+
 #load {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: #1f002d;;
+    background-color: #1f002d;
     z-index: 3;
+}
+
+.collections-pagination {
+    gap: 2px;
+    display: flex;
+    height: 10vh;
+    z-index: 100;
+    position: absolute;
+    right: 0px;
+    top: -83px;
+    justify-content: end;
+    opacity: 0;
+}
+
+.collections-pagination .swiper-pagination-bullet {
+    width: 18px;
+    height: 100%;
+    border-radius: 0;
+    text-align: center;
+    line-height: 10vh;
+    vertical-align: middle;
+    opacity: 1;
+    background: transparent;
+    /* box-shadow:2px 2px 2px rgba(0,0,0,0.5); */
+    font-size: 2em;
+    border-bottom: 3px solid grey;
+}
+
+.collections-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    border-bottom: 3px solid white;
+    transition: all 1.8s ease;
+    -webkit-transition: all 1.8s ease;
+    -moz-transition: all 1.8s ease;
+    -ms-transition: all 1.8s ease;
+    -o-transition: all 1.8s ease;
 }
