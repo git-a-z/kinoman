@@ -2,9 +2,11 @@
 <footer class="footer flex sp_btw">
     <nav class="flex sp_btw footer_navigation wrap">
         <div class="header_logo">
-            <img src="/img/logo.svg" alt="logo" class="header_logo_img">
-            <p class="header_logo_p">Киноман</p>
-            <p class="header_logo_p">GeekBrains 2022</p>
+            <a href="{{route('home')}}">
+                <img src="/img/logo.svg" alt="logo" class="header_logo_img">
+                <p class="header_logo_p">Киноман</p>
+                <p class="header_logo_p">GeekBrains 2022</p>
+            </a>
         </div>
         <ul>
             <li class="footer_navigation_list">
