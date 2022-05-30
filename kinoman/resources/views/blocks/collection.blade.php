@@ -1,4 +1,3 @@
-<!-- <div class="grid main_catalog_section"> -->
 <div>
     <div class="swiper slider slider_main">
         <div class="swiper-wrapper slider__wrapper">

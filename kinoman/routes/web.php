@@ -78,3 +78,8 @@ Route::post('/add_del_film_in_favorites', [
     'uses' => 'App\Http\Controllers\ProfileController@addDelFilmInFavorites',
     'as' => 'add_del_film_in_favorites'
 ]);
+
+Route::post('/add_del_emoji', [
+    'uses' => 'App\Http\Controllers\ProfileController@addDelEmoji',
+    'as' => 'add_del_emoji'
+]);
