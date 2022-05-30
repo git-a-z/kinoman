@@ -4,7 +4,7 @@ $(function(){
         $('#load').css('zIndex',-1);
     });
   });
-//   var keys = ['Air', 'Earth', 'Water', 'Fire', 'Love'];
+
 
 const sliderMain = new Swiper(".slider_main", {
     // freeMode: true,
