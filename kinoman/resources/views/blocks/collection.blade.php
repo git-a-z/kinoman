@@ -10,5 +10,6 @@
         </div>
         <div class="swiper-button-prev arrow arrow_left"></div>
         <div class="swiper-button-next arrow arrow_right"></div>
+        <div class="collections-pagination"></div>
     </div>
 </div>

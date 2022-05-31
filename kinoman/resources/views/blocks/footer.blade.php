@@ -1,12 +1,13 @@
 {{--<footer class="footer container flex sp_btw">--}}
 <footer class="footer flex sp_btw">
     <nav class="flex sp_btw footer_navigation wrap">
-        <div class="header_logo">
-            <a href="{{route('home')}}">
+        <div class="flex footer_navigation_lists">
+        <div class="footer_logo">
+            <a href="{{route('home')}}" class="">
                 <img src="/img/logo.svg" alt="logo" class="header_logo_img">
                 <p class="header_logo_p">Киноман</p>
-                <p class="header_logo_p">GeekBrains 2022</p>
             </a>
+            <p class="header_logo_p">GeekBrains 2022</p>
         </div>
         <ul>
             <li class="footer_navigation_list">
@@ -36,6 +37,8 @@
                 <a href="#">Социальные сети</a>
             </li>
         </ul>
+        </div>
+        
         <div class="flex sp_btw footer_social">
             <a href="#">
                 <svg

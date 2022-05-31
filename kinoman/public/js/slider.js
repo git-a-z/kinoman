@@ -5,12 +5,13 @@ $(function(){
     });
   });
 
+
 const sliderMain = new Swiper(".slider_main", {
     // freeMode: true,
     // centeredSlides: true,
-    mousewheel: true,
+    mousewheel: false,
     parallax: false,
-    loop: false,
+    loop: true,
     loopAdditionalSlides: 0,
     breakpoints: {
         320: {
@@ -31,5 +32,13 @@ const sliderMain = new Swiper(".slider_main", {
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: '.collections-pagination',
+        clickable: false,
+        renderBullet: function (index, className) {
+            return '<div class="' + className + '">' +  
+            '</div>';
+        },
     },
 });

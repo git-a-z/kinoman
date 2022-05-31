@@ -1,17 +1,20 @@
 <header class="flex sp_btw header">
     <nav class="flex header_navigation">
-        <div class="header_logo">
-            <a href="{{route('home')}}">
-                <img src="/img/logo.svg" alt="logo" class="header_logo_img">
-                <p class="header_logo_p">Киноман</p>
-            </a>
-        </div>
-        <ul class="flex sp_btw header_navigation_list">
+        
+        <a href="{{route('home')}}" class="header_logo">
+            <img src="/img/logo.svg" alt="logo" class="header_logo_img">
+            <p class="header_logo_p">Киноман</p>
+        </a>
+            
+        
+        <ul class="flex header_navigation_list">
+    
             <li><a href="{{route('catalog')}}">Каталог</a></li>
-            <li><a href="{{route('collections')}}">Коллекции</a></li>
+            <li><a href="{{route('collections')}}">Коллекции</a></li>          
+
         </ul>
     </nav>
-    <div class="flex sp_btw header_blocks">
+    <div class="flex header_blocks">
         <a href="{{route('search')}}" class="flex header_blocks_search">
             <svg
                 width="32"
@@ -68,7 +71,7 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('profile') }}">
-                                            Профиль
+                                           Профиль 
                                         </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
