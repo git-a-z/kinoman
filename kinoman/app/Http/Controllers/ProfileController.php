@@ -22,12 +22,14 @@ class ProfileController extends Controller
                 ul.list_id AS collection_id,
                 l.name,
                 f.*,
+                fi.briefly,
                 IFNULL(ul1.list_id, 0) AS is_chosen,
                 IFNULL(ul2.list_id, 0) AS is_favorite,
                 IFNULL(ul3.list_id, 0) AS is_must_see
             FROM user_list_films ul
             LEFT JOIN lists l ON ul.list_id = l.id
             LEFT JOIN films f ON ul.film_id = f.id
+            LEFT JOIN film_info fi ON ul.film_id = fi.film_id
             LEFT JOIN user_list_films ul1 ON ul.film_id = ul1.film_id
                 AND ul1.user_id = ul.user_id
                 AND ul1.list_id = 1
@@ -68,7 +70,8 @@ class ProfileController extends Controller
             $query = DB::table('user_list_films as ul')
                 ->join('lists as l', 'ul.list_id', '=', 'l.id')
                 ->join('films as f', 'ul.film_id', '=', 'f.id')
-                ->select('ul.list_id as collection_id', 'l.name', 'f.*');
+                ->leftJoin('film_info as fi', 'ul.list_id', '=', 'fi.film_id')
+                ->select('ul.list_id as collection_id', 'l.name', 'f.*', 'fi.briefly');
 
             $query = $query
                 ->selectRaw('IFNULL(ul1.list_id, 0) AS is_chosen')
@@ -146,12 +149,12 @@ class ProfileController extends Controller
             $film_id = $request->film_id;
             $list_id = $request->list_id;
             $isSelected = false;
-            $view = 'blocks.add_del_chosen';
+            $view = 'blocks.icon_chosen';
 
             if ($list_id == 2) {
-                $view = 'blocks.add_del_favorite';
+                $view = 'blocks.icon_favorite';
             } else if ($list_id == 3) {
-                $view = 'blocks.add_del_must_see';
+                $view = 'blocks.icon_must_see';
             }
 
             $query = DB::table('user_list_films')
@@ -186,6 +189,7 @@ class ProfileController extends Controller
             $user_id = Auth::id();
             $film_id = $request->film_id;
             $emoji_id = $request->emoji_id;
+            $count = (int)$request->count;
             $isSelected = false;
             $view = 'blocks.emoji_good';
 
@@ -208,17 +212,20 @@ class ProfileController extends Controller
 
             if ($record) {
                 $query->delete();
+                $count--;
             } else {
                 DB::table('user_film_emojis')
                     ->insertOrIgnore(
                         ['user_id' => $user_id, 'film_id' => $film_id, 'emoji_id' => $emoji_id]
                     );
                 $isSelected = true;
+                $count++;
             }
 
             return view($view, [
                 'id' => $film_id,
-                'isSelected' => $isSelected
+                'isSelected' => $isSelected,
+                'count' => $count,
             ]);
         } else {
             return 0;

@@ -4,15 +4,15 @@
     <div class="flex sp_btw main_catalog_description">
         <div>
             @auth
-                @include('blocks.add_del_chosen', ['id' => $item->id, 'isSelected' => $item->is_chosen])
-                @include('blocks.add_del_favorite', ['id' => $item->id, 'isSelected' => $item->is_favorite])
-                @include('blocks.add_del_must_see', ['id' => $item->id, 'isSelected' => $item->is_must_see])
+                @include('blocks.icon_chosen', ['id' => $item->id, 'isSelected' => $item->is_chosen])
+                @include('blocks.icon_favorite', ['id' => $item->id, 'isSelected' => $item->is_favorite])
+                @include('blocks.icon_must_see', ['id' => $item->id, 'isSelected' => $item->is_must_see])
             @endauth
         </div>
         <div>
             <p class="main_catalog_description_h3">Рейтинг: 7.7 {{$item->release_year}}</p>
             <p> {{$item->rus_title}}
-                — Краткое содержание фильма...
+                — {{$item->briefly}}
             </p>
         </div>
     </div>

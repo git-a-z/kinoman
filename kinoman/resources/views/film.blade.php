@@ -31,39 +31,68 @@
                 </p>
                 <p class="movie_blocks_text_p">
                     <span class="movie_blocks_text_grey">Режиссёр:</span> {{$data->directors}} <br>
-                    <span class="movie_blocks_text_grey">Актёры:</span> {{$data->actors}}
+                    <span class="movie_blocks_text_grey">Актёры:</span> {{$data->actors}} <br>
+                    <span class="movie_blocks_text_grey">Рейтинг Киномана:</span> <span class="movie_blocks_text_white">8,5</span><br>
                 </p>
-                <p class="movie_blocks_text_p">
-                    {{$data->about}}
-                </p>
+                <div>
+                    <h1 class="movie_blocks_text_p h1_films_p">О фильме:</h1>
+                    <p class="movie_blocks_text_p">
+                        {{$data->about}}
+                    </p>
+                </div>
+            </div>
+            <div class="movie_blocks_img">
+                <img class="movie_blocks_image" src="{{'../img/'.$data->poster}}" alt="{{$data->title}}">
+            </div>
+            <div class="movie_btn_box">
                 @auth
                     <div class="movie_btn" onclick="myFunction()">
-                        Фильм в списках
+                        Добавить в списки
                         <div class="movie_drop" id="myDropdown">
-                            <div id="film_lists">
+                            <div id="film_lists" class="film_lists">
                                 @include('blocks.film_lists')
                             </div>
                         </div>
                     </div>
                 @endauth
             </div>
-            <div class="movie_blocks_img">
-                <img class="movie_blocks_image" src="{{'../img/'.$data->poster}}" alt="{{$data->title}}">
+        </div>
+        <div class="movie_blocks_range"></div>
+        <div class="movie_widget_rating">
+            <div class="movie_widget">
+                @auth <h2>Как вам фильм?</h2> @endauth
+                @guest <h2>Впечатления пользователей:</h2> @endguest
+                <div class="movie_widget_icon">
+                    @include('blocks.emoji_good', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_good, 'count' => $emojis[0]->count_good])
+                    @include('blocks.emoji_dull', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_dull, 'count' => $emojis[0]->count_dull])
+                    @include('blocks.emoji_scary',['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_scary,'count' => $emojis[0]->count_scary])
+                    @include('blocks.emoji_sad',  ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_sad,  'count' => $emojis[0]->count_sad])
+                    @include('blocks.emoji_fun',  ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_fun,  'count' => $emojis[0]->count_fun])
+                </div>
             </div>
-            @auth
-                <div class="movie_widget">
-                    <h2>Как вам фильм?</h2>
-                    <div class="movie_widget_icon">
-                        @isset($emojis)
-                            @include('blocks.emoji_good', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_good])
-                            @include('blocks.emoji_dull', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_dull])
-                            @include('blocks.emoji_scary', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_scary])
-                            @include('blocks.emoji_sad', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_sad])
-                            @include('blocks.emoji_fun', ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_fun])
-                        @endisset
+            <div class="movie_widget movie_rating">
+                <h2>Ваша оценка</h2>
+                <div class="movie_rating_number">
+                    <span class="movie_rating_number_span">1</span>
+                    <span class="movie_rating_number_span">2</span>
+                    <span class="movie_rating_number_span">3</span>
+                    <span class="movie_rating_number_span">4</span>
+                    <span class="movie_rating_number_span">5</span>
+                    <span class="movie_rating_number_span">6</span>
+                    <span class="movie_rating_number_span">7</span>
+                    <span class="movie_rating_number_span">8</span>
+                    <span class="movie_rating_number_span">9</span>
+                    <span class="movie_rating_number_span">10</span>
+                </div>
+                <div class="movie_rating_number_p">
+                    <div>
+                        <p>очень плохо</p>
+                    </div>
+                    <div class="rating_number_p">
+                        <p>отлично</p>
                     </div>
                 </div>
-            @endauth
+            </div>
         </div>
         <section class="movie_aside_widget">
             <div class="movie_information">
@@ -83,12 +112,12 @@
                             ({{$data->title}})
                         </p>
                         <p>
-                            <span class="movie_information_span"> Примьера в мире  </span> <br>
+                            <span class="movie_information_span"> Премьера в мире  </span> <br>
                             {{$data->release_year}}
                         </p>
                     </div>
                 </div>
-                <div class="movie_information_p">
+                <div class="movie_information_p box-information_p">
                     <h3>Съёмочная группа</h3>
                     <div class="movie_information_p">
                         <p>
@@ -102,7 +131,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="movie_information_p">
+                    <div class="movie_information_p box-information">
                         <h3>Звук и субтитры</h3>
                         <p>
                             <span class="movie_information_span"> Аудиодорожки </span> <br>

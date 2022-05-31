@@ -108,14 +108,12 @@ window.addEventListener("scroll", (e) => {
 });
 
 function handleDrop(e) {
-    // console.log('handleDrop');
-    e.preventDefault(); // stops the browser from redirecting.
+    e.preventDefault();
     return false;
 }
 
 function dragend(e) {
-    // console.log('dragend');
-    let card = e.path.find(el => el.id && el.id.includes('film_id_'));
+    let card = e.target;
 
     if (card !== undefined) {
         let new_list_id = e.currentTarget.id.replace(/list_id_/, '');
@@ -124,7 +122,6 @@ function dragend(e) {
         if (new_list_id !== old_list_id) {
             let film_id = card.id.replace(/film_id_/, '');
             card.setAttribute('data-list_id', new_list_id);
-            // console.log('new=' + new_list_id, ' film=' + film_id + ' ', 'old=' + old_list_id);
 
             $.ajax({
                 type: "POST",

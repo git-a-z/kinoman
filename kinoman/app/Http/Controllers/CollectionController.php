@@ -20,12 +20,14 @@ class CollectionController extends Controller
                 fc.collection_id,
                 c.name,
                 f.*,
+                fi.briefly,
                 IFNULL(ul1.list_id, 0) AS is_chosen,
                 IFNULL(ul2.list_id, 0) AS is_favorite,
                 IFNULL(ul3.list_id, 0) AS is_must_see
             FROM film_collections fc
             LEFT JOIN films f ON fc.film_id = f.id
             LEFT JOIN collections c ON fc.collection_id = c.id
+            LEFT JOIN film_info fi ON fc.film_id = fi.film_id
             LEFT JOIN user_list_films ul1 ON fc.film_id = ul1.film_id
                 AND ul1.user_id = :user_id1
                 AND ul1.list_id = 1
@@ -47,10 +49,12 @@ class CollectionController extends Controller
                 'SELECT
                 fc.collection_id,
                 c.name,
-                f.*
+                f.*,
+                fi.briefly
             FROM film_collections fc
             LEFT JOIN films f ON fc.film_id = f.id
             LEFT JOIN collections c ON fc.collection_id = c.id
+            LEFT JOIN film_info fi ON fc.film_id = fi.film_id
             ORDER BY fc.collection_id, f.release_year DESC'
             );
         }
@@ -71,7 +75,8 @@ class CollectionController extends Controller
         $query = DB::table('film_collections as fc')
             ->join('films as f', 'fc.film_id', '=', 'f.id')
             ->join('collections as c', 'fc.collection_id', '=', 'c.id')
-            ->select('fc.collection_id', 'c.name', 'f.*');
+            ->leftJoin('film_info as fi', 'fc.film_id', '=', 'fi.film_id')
+            ->select('fc.collection_id', 'c.name', 'f.*', 'fi.briefly');
 
         if (Auth::check()) {
             $user_id = Auth::id();

@@ -281,7 +281,8 @@ svg:hover {
 
 .main_catalog_link:hover {
     /*transform: translate(0, -10px);
-    */transform: scale(1.05);
+    */
+    transform: scale(1.05);
     -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -377,7 +378,7 @@ svg:hover {
     -moz-transform: translateY(6.1rem);
     -ms-transform: translateY(6.1rem);
     -o-transform: translateY(6.1rem);
-  }
+}
 
 .footer_call_text {
     top: 2rem;
@@ -418,6 +419,7 @@ svg:hover {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .movie_blocks_text {
@@ -449,6 +451,11 @@ svg:hover {
     color: #8c8493;
 }
 
+.movie_blocks_text_white {
+    font-size: 24px;
+}
+
+
 .movie_blocks__thumb_svg {
     position: absolute;
     left: 30.18%;
@@ -463,6 +470,7 @@ svg:hover {
     width: 100%;
     justify-self: end;
     text-align: right;
+    height: 80%;
 }
 
 .movie_blocks_image {
@@ -494,8 +502,15 @@ svg:hover {
     background-color: #421867;
 }
 
+.h1_films_p {
+    border-bottom: 2px solid #421867;
+    color: #8c8493;
+    width: 15%;
+}
+
 .movie_drop {
     width: 331px;
+    height: 222%;
     background: #f3f3f3;
     font-style: normal;
     font-size: 15px;
@@ -509,11 +524,17 @@ svg:hover {
     flex-direction: column;
 }
 
+.film_lists {
+    width: 20rem;
+}
+
 .movie_drop_a {
     color: #240935;
     padding: 3px 5px;
     text-decoration: none;
     display: block;
+    /*border-radius: 10px;*/
+    background: #f3f3f3;
 }
 
 .movie_drop_a:hover {
@@ -526,6 +547,12 @@ svg:hover {
 
 .show-menu {
     display: flex;
+}
+
+.movie_blocks_range {
+    background: #421867;
+    height: 0.3rem;
+    margin-top: -3%;
 }
 
 .movie_box_text {
@@ -571,6 +598,18 @@ svg:hover {
     color: #ffffff;
 }
 
+.movie_widget_block {
+    margin-top: -2rem;
+    width: 25rem;
+    height: 15.5rem;
+}
+
+.movie_widget-block_icon {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
 .movie_widget {
     width: 33rem;
     height: 15.5rem;
@@ -582,12 +621,23 @@ svg:hover {
     align-items: center;
     color: #ffffff;
     padding: 3rem 3rem;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .movie_widget_icon {
     display: flex;
     justify-content: space-between;
     margin-top: 3rem;
+}
+
+.movie_blocks_number {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    color: #8c8493;
+    width: 24rem;
+    padding-left: 1rem;
 }
 
 .movie_information {
@@ -601,8 +651,9 @@ svg:hover {
     line-height: 30px;
     color: #ffffff;
     padding: 5rem 5rem;
-    margin-bottom: 20rem;
+    margin-bottom: 5rem;
     justify-items: stretch;
+
 }
 
 .movie_information_p {
@@ -612,10 +663,19 @@ svg:hover {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-left: 2%;
 }
 
 .movie_information_span {
     color: #8c8493;
+}
+
+.box-information_p {
+    padding-left: 35%;
+}
+
+.box-information {
+    padding-left: 45%;
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -632,11 +692,13 @@ svg:hover {
     background-color: #1f002d;
     font-size: 28px;
 }
+
 .pagination li:focus {
     background-color: #8c8493;
     border: 1px solid #240935;
     color: #f3f3f3;
 }
+
 .pagination a {
     color: #f3f3f3;
     background-color: #1f002d;
@@ -828,7 +890,6 @@ svg:hover {
     cursor: pointer;
     display: inline-block;
     background-color: #1f002d;
-    color: #f2f2f2;
     width: 250px;
     height: 40px;
     padding-left: 10px;
@@ -839,14 +900,13 @@ svg:hover {
     -ms-flex-align: center;
     align-items: center;
     -webkit-transition: background-color 0.2s ease-in,
-        -webkit-box-shadow 0.2s ease-in;
-    transition: background-color 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
-    transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+    -webkit-box-shadow 0.2s ease-in;
+    /*transition: background-color 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
+    transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;*/
     transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in,
-        -webkit-box-shadow 0.2s ease-in;
-    border-radius: 4px;
+    -webkit-box-shadow 0.2s ease-in;
     position: relative;
-    display: inline-block;
+
 }
 
 .main_box_btn:hover,
@@ -858,7 +918,7 @@ svg:hover {
 .main_box_drop {
     background-color: #1f002d;
     width: 240px;
-    height: 180px;
+    height: 16rem;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-size: 12px;
@@ -1027,4 +1087,69 @@ svg:hover {
     -moz-transition: all 1.8s ease;
     -ms-transition: all 1.8s ease;
     -o-transition: all 1.8s ease;
+}
+
+
+.movie_widget_rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie_rating {
+    width: 50%;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.movie_rating_number {
+    background-color: #1f002d;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    cursor: default;
+}
+
+.movie_rating_number_p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding-top: 1.5%;
+    padding-right: 1.2rem;
+    padding-left: 1rem;
+}
+
+.movie_rating_number_span {
+    padding: 0.9rem 1.6rem;
+    border-radius: 5px;
+}
+
+/*.movie_rating_number_span:active{
+    background-color: #8C8493;
+    color: #f3f3f3;
+}*/
+.movie_rating_number_span:focus {
+    background-color: #8C8493;
+    color: #f3f3f3;
+}
+
+.movie_rating_number_span:hover {
+    background-color: #8C8493;
+    color: #f3f3f3;
+}
+
+.movie_widget_icon {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.emoji_count {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.no_hover {
+    pointer-events: none;
 }

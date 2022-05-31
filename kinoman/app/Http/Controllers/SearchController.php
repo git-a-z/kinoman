@@ -67,7 +67,8 @@ class SearchController extends Controller
         if (!empty($searchString) || !empty($genres) || !empty($actors) || !empty($years)) {
             $query = DB::table('films as f')
                 ->distinct()
-                ->select('f.*')
+                ->leftJoin('film_info as fi', 'f.id', '=', 'fi.film_id')
+                ->select('f.*', 'fi.briefly')
                 ->selectRaw('0 as collection_id');
 
             if (Auth::check()) {
