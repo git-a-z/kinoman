@@ -13,9 +13,7 @@
         <div class="position_container">
             <div class="profile_container">
                 <div class="user_img">
-                    <a href="#">
-                        <img src="img/userfoto.svg">
-                    </a>
+                    <img src="img/userfoto.svg">
                 </div>
                 <div class="user_info">
                     <h2>{{$user->name}}</h2>

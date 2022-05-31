@@ -1,7 +1,6 @@
 {{--<footer class="footer container flex sp_btw">--}}
 <footer class="footer flex sp_btw">
     <nav class="flex sp_btw footer_navigation wrap">
-        
         <div class="flex footer_navigation_lists">
         <div class="footer_logo">
             <a href="{{route('home')}}" class="">

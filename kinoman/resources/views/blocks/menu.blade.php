@@ -10,8 +10,8 @@
         <ul class="flex header_navigation_list">
     
             <li><a href="{{route('catalog')}}">Каталог</a></li>
-            <li><a href="{{route('collections')}}">Коллекции</a></li>
-            
+            <li><a href="{{route('collections')}}">Коллекции</a></li>          
+
         </ul>
     </nav>
     <div class="flex header_blocks">
@@ -46,7 +46,8 @@
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
-                                    <svg class="header_blocks_img_svg" width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="header_blocks_img_svg" width="30" height="30" viewBox="0 0 50 50"
+                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M25 0C11.1914 0 0 11.1914 0 25C0 38.8086 11.1914 50 25 50C38.8086 50 50 38.8086
                                             50 25C50 11.1914 38.8086 0 25 0ZM25 12.5C28.8838 12.5 32.0312 15.6484 32.0312 19.5312C32.0312
                                             23.4141 28.8867 26.5625 25 26.5625C21.1172 26.5625 17.9688 23.4141 17.9688 19.5312C17.9688 15.6484

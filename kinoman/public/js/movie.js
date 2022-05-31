@@ -117,3 +117,31 @@ function addDelFilmInFavorites(e, list_id) {
         });
     }
 }
+
+function addDelEmoji(e, film_id, emoji_id) {
+    e.preventDefault();
+
+    let emoji_id_name = 'emoji_good';
+
+    if (emoji_id === 2) {
+        emoji_id_name = 'emoji_dull';
+    } else if (emoji_id === 3) {
+        emoji_id_name = 'emoji_scary';
+    } else if (emoji_id === 4) {
+        emoji_id_name = 'emoji_sad';
+    } else if (emoji_id === 5) {
+        emoji_id_name = 'emoji_fun';
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/add_del_emoji",
+        data: {
+            'film_id': film_id,
+            'emoji_id': emoji_id,
+        },
+        success: function (response) {
+            $('#' + emoji_id_name).replaceWith(response);
+        }
+    });
+}

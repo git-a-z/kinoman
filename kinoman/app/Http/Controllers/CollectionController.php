@@ -26,13 +26,13 @@ class CollectionController extends Controller
             FROM film_collections fc
             LEFT JOIN films f ON fc.film_id = f.id
             LEFT JOIN collections c ON fc.collection_id = c.id
-            LEFT JOIN user_lists ul1 ON fc.film_id = ul1.film_id
+            LEFT JOIN user_list_films ul1 ON fc.film_id = ul1.film_id
                 AND ul1.user_id = :user_id1
                 AND ul1.list_id = 1
-            LEFT JOIN user_lists ul2 ON fc.film_id = ul2.film_id
+            LEFT JOIN user_list_films ul2 ON fc.film_id = ul2.film_id
                 AND ul2.user_id = :user_id2
                 AND ul2.list_id = 2
-            LEFT JOIN user_lists ul3 ON fc.film_id = ul3.film_id
+            LEFT JOIN user_list_films ul3 ON fc.film_id = ul3.film_id
                 AND ul3.user_id = :user_id3
                 AND ul3.list_id = 3
             ORDER BY fc.collection_id, f.release_year DESC',
@@ -81,21 +81,21 @@ class CollectionController extends Controller
 
             $query = $query
                 ->selectRaw('IFNULL(ul1.list_id, 0) AS is_chosen')
-                ->leftJoin('user_lists as ul1', function ($leftJoin) use ($user_id, $list1_id) {
+                ->leftJoin('user_list_films as ul1', function ($leftJoin) use ($user_id, $list1_id) {
                     $leftJoin->on('fc.film_id', '=', 'ul1.film_id')
                         ->where('ul1.user_id', '=', $user_id)
                         ->where('ul1.list_id', '=', $list1_id);
                 });
             $query = $query
                 ->selectRaw('IFNULL(ul2.list_id, 0) AS is_favorite')
-                ->leftJoin('user_lists as ul2', function ($leftJoin) use ($user_id, $list2_id) {
+                ->leftJoin('user_list_films as ul2', function ($leftJoin) use ($user_id, $list2_id) {
                     $leftJoin->on('fc.film_id', '=', 'ul2.film_id')
                         ->where('ul2.user_id', '=', $user_id)
                         ->where('ul2.list_id', '=', $list2_id);
                 });
             $query = $query
                 ->selectRaw('IFNULL(ul3.list_id, 0) AS is_must_see')
-                ->leftJoin('user_lists as ul3', function ($leftJoin) use ($user_id, $list3_id) {
+                ->leftJoin('user_list_films as ul3', function ($leftJoin) use ($user_id, $list3_id) {
                     $leftJoin->on('fc.film_id', '=', 'ul3.film_id')
                         ->where('ul3.user_id', '=', $user_id)
                         ->where('ul3.list_id', '=', $list3_id);

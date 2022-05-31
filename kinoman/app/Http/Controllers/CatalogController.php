@@ -25,21 +25,21 @@ class CatalogController extends Controller
             $list3_id = 3;
             $query = $query
                 ->selectRaw('IFNULL(ul1.list_id, 0) AS is_chosen')
-                ->leftJoin('user_lists as ul1', function ($leftJoin) use ($user_id, $list1_id) {
+                ->leftJoin('user_list_films as ul1', function ($leftJoin) use ($user_id, $list1_id) {
                     $leftJoin->on('id', '=', 'ul1.film_id')
                         ->where('ul1.user_id', '=', $user_id)
                         ->where('ul1.list_id', '=', $list1_id);
                 });
             $query = $query
                 ->selectRaw('IFNULL(ul2.list_id, 0) AS is_favorite')
-                ->leftJoin('user_lists as ul2', function ($leftJoin) use ($user_id, $list2_id) {
+                ->leftJoin('user_list_films as ul2', function ($leftJoin) use ($user_id, $list2_id) {
                     $leftJoin->on('id', '=', 'ul2.film_id')
                         ->where('ul2.user_id', '=', $user_id)
                         ->where('ul2.list_id', '=', $list2_id);
                 });
             $query = $query
                 ->selectRaw('IFNULL(ul3.list_id, 0) AS is_must_see')
-                ->leftJoin('user_lists as ul3', function ($leftJoin) use ($user_id, $list3_id) {
+                ->leftJoin('user_list_films as ul3', function ($leftJoin) use ($user_id, $list3_id) {
                     $leftJoin->on('id', '=', 'ul3.film_id')
                         ->where('ul3.user_id', '=', $user_id)
                         ->where('ul3.list_id', '=', $list3_id);
@@ -55,11 +55,14 @@ class CatalogController extends Controller
 
     public function film(Film $film): Factory|View|Application
     {
-        $lists = $this->getLists($film->getKey('id'));
+        $film_id = $film->getKey('id');
+        $lists = $this->getLists($film_id);
+        $emojis = $this->getEmojis($film_id);
 
         return view('film', [
             'data' => $film,
-            'lists' => $lists
+            'lists' => $lists,
+            'emojis' => $emojis
         ]);
     }
 
@@ -77,7 +80,7 @@ class CatalogController extends Controller
                     :cur_user_id AS user_id,
                     :cur_film_id AS film_id
                 FROM lists l
-                LEFT JOIN user_lists ul ON id = list_id
+                LEFT JOIN user_list_films ul ON id = list_id
                                                AND user_id = :user_id
                                                AND film_id = :film_id
                 ORDER BY l.id', [
@@ -91,6 +94,51 @@ class CatalogController extends Controller
         return $lists;
     }
 
+    public function getEmojis(int $film_id): array
+    {
+        $emojis = [];
+
+        if (Auth::check()) {
+            $user_id = Auth::id();
+
+            $emojis = DB::select(
+                'SELECT
+                    f.id,
+                    IFNULL(ufe1.emoji_id, 0) AS is_good,
+                    IFNULL(ufe2.emoji_id, 0) AS is_dull,
+                    IFNULL(ufe3.emoji_id, 0) AS is_scary,
+                    IFNULL(ufe4.emoji_id, 0) AS is_sad,
+                    IFNULL(ufe5.emoji_id, 0) AS is_fun
+                FROM films f
+                LEFT JOIN user_film_emojis ufe1 ON f.id = ufe1.film_id
+                    AND ufe1.user_id = :user_id1
+                    AND ufe1.emoji_id = 1
+                LEFT JOIN user_film_emojis ufe2 ON f.id = ufe2.film_id
+                    AND ufe2.user_id = :user_id2
+                    AND ufe2.emoji_id = 2
+                LEFT JOIN user_film_emojis ufe3 ON f.id = ufe3.film_id
+                    AND ufe3.user_id = :user_id3
+                    AND ufe3.emoji_id = 3
+                LEFT JOIN user_film_emojis ufe4 ON f.id = ufe4.film_id
+                    AND ufe4.user_id = :user_id4
+                    AND ufe4.emoji_id = 4
+                LEFT JOIN user_film_emojis ufe5 ON f.id = ufe5.film_id
+                    AND ufe5.user_id = :user_id5
+                    AND ufe5.emoji_id = 5
+                WHERE f.id = :film_id', [
+                    'user_id1' => $user_id,
+                    'user_id2' => $user_id,
+                    'user_id3' => $user_id,
+                    'user_id4' => $user_id,
+                    'user_id5' => $user_id,
+                    'film_id' => $film_id
+                ]
+            );
+        }
+
+        return $emojis;
+    }
+
     public function addDelFilmInList(Request $request): Factory|View|Application
     {
         $user_id = $request->user_id;
@@ -99,13 +147,13 @@ class CatalogController extends Controller
         $new_list_id = $request->new_list_id;
 
         if ($list_id) {
-            DB::table('user_lists')
+            DB::table('user_list_films')
                 ->where('user_id', $user_id)
                 ->where('film_id', $film_id)
                 ->where('list_id', $list_id)
                 ->delete();
         } else {
-            DB::table('user_lists')
+            DB::table('user_list_films')
                 ->insertOrIgnore(
                     ['user_id' => $user_id, 'film_id' => $film_id, 'list_id' => $new_list_id]
                 );

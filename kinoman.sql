@@ -62,7 +62,7 @@ INSERT INTO films (title, rus_title, release_year, image_path) VALUES
 	('Ghost in the Shell', 'Призрак в доспехах', 2017, 'GhostInTheShell.png'),
 	('Rogue One', 'Изгой-один. Звёздные войны: Истории', 2016, 'RogueOne.png'),
 	('Spirited Away', 'Унесенные призраками', 2001, 'SpiritedAway.png'),
---	40
+-- 	40
 	('Howl\'s Moving Castle', 'Ходячий замок', 2004, 'HowlCastle.png'),
 	('Princess Mononoke', 'Принцесса Мононоке', 1997, 'PrincessMononoke.png'),
 	('Vikings','Викинги',2013,'Vikings.png'),
@@ -186,7 +186,7 @@ INSERT INTO persons (firstname, lastname, birthday) VALUES
 	('Хаяо', 'Миядзаки', '1941-01-05'),
 	('Дзё', 'Хисаиси', '1950-12-06'),
 	('Кэтрин','Уинник','1977-12-17'),
---	90
+-- 	90
 	('Трэвис','Фиммел','1979-07-15'),
 	('Майкл','Хёрст','1952-09-21'),
 	('Киаран','Донелли','1970-12-12'),
@@ -407,8 +407,7 @@ INSERT INTO film_info (film_id, length_in_minutes, briefly, description, poster_
 	(39,133,'Спин-офф, открывающий новый взгляд на вселенную Лукаса','Предыстория культовой саги Джорджа Лукаса, рассказанная режиссёром Гаретом Эдвардсом про отряд повстанцев, которые должны выполнить особенную миссию. «Изгой-один. Звёздные войны: Истории» — приквел к фильму «Звёздные войны: Новая надежда» (1977). События в фильме разворачиваются за несколько дней до событий в четвёртом эпизоде. Дерзкая Джин Эрсо (Фелисити Джонс) присоединилась к отряду Сопротивления для выполнения специальной миссии. Им необходимо украсть чертежи Звезды смерти — главного имперского оружия. Помогать ей в этом будут Кассиан Андор (Диего Луна) и дроид K-2SO. Премьера фильма состоялась 10 декабря 2016 года.','RogueOne_poster.png'),
 	(40,125,'Туннель ведет Тихиро в загадочный город','Тихиро с мамой и папой переезжает в новый дом. Заблудившись по дороге, они оказываются в странном пустынном городе, где их ждет великолепный пир. Родители с жадностью набрасываются на еду и к ужасу девочки превращаются в свиней, став пленниками злой колдуньи Юбабы. Теперь, оказавшись одна среди волшебных существ и загадочных видений, Тихиро должна придумать, как избавить своих родителей от чар коварной старухи.','SpiritedAway_poster.png'),
 	(41,119,'Сможет ли Софи избавить себя от чар','Злая ведьма заточила 18-летнюю Софи в тело старухи. Девушка-бабушка бежит из города куда глаза глядят и встречает удивительный дом на ножках, где знакомится с могущественным волшебником Хаулом и демоном Кальцифером. Кальцифер должен служить Хаулу по договору, условия которого он не может разглашать. Девушка и демон решают помочь друг другу избавиться от злых чар.','HowlCastle_poster.png'),
-	(42,134,'Юный принц должен изменить свою судьбу','Убив вепря, юный принц Аситака навлек на себя смертельное проклятие. Старая знахарка предсказала, что только он сам способен изменить свою судьбу, и отважный воин отправился в опасное путешествие. Так он оказался в загадочной стране, где люди под предводительством злой госпожи Эбоси воевали с обитателями леса: духами, демонами и гигантскими существами, каких Аситака раньше никогда не видел.
-И была с ними принцесса Мононоке - повелительница зверей и дочь волчицы. Теперь судьба всех зависит только от одного воина - принца Аситаки.','PrincessMononoke_poster.png'),
+	(42,134,'Юный принц должен изменить свою судьбу','Убив вепря, юный принц Аситака навлек на себя смертельное проклятие. Старая знахарка предсказала, что только он сам способен изменить свою судьбу, и отважный воин отправился в опасное путешествие. Так он оказался в загадочной стране, где люди под предводительством злой госпожи Эбоси воевали с обитателями леса: духами, демонами и гигантскими существами, каких Аситака раньше никогда не видел. И была с ними принцесса Мононоке - повелительница зверей и дочь волчицы. Теперь судьба всех зависит только от одного воина - принца Аситаки.','PrincessMononoke_poster.png'),
 	(43,45,'История Рагнара, потомка Одина','Рассказ об отряде викингов Рагнара. Он восстал, чтобы стать королём племён викингов. Норвежская легенда гласит, что он был прямым потомком Одина, бога войны и воинов.','Vikings_poster.png'),
 	(44,156,'До последней капли крови','Охотник Хью Гласс серьезно ранен на неизведанных просторах американского Дикого Запада. Товарищ Хью по отряду покорителей новых земель Джон Фицжеральд предательски оставляет его умирать в одиночестве. Теперь у Гласса осталось только одно оружие – его сила воли. Он готов бросить вызов первобытной природе, суровой зиме и враждебным племенам индейцев, только чтобы выжить и отомстить Фицжеральду.','Revenant_poster.png');
 
@@ -539,8 +538,8 @@ CREATE TABLE lists(
 INSERT INTO lists (name) VALUES
 	('Избранное'),('Любимое'),('Надо посмотреть'),('Как мне это развидеть?');
 
-DROP TABLE IF EXISTS user_lists;
-CREATE TABLE user_lists (
+DROP TABLE IF EXISTS user_list_films;
+CREATE TABLE user_list_films (
 	user_id BIGINT UNSIGNED NOT NULL,	
 	list_id SMALLINT UNSIGNED NOT NULL,
 	film_id BIGINT UNSIGNED NOT NULL,
@@ -550,15 +549,199 @@ CREATE TABLE user_lists (
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (list_id) REFERENCES lists(id),
 	FOREIGN KEY (film_id) REFERENCES films(id)
-) COMMENT 'Пользователь-списоки-фильмы';
+) COMMENT 'Пользователь-список-фильмы';
 
-INSERT INTO user_lists (user_id, list_id, film_id) VALUES
+-- user_lists
+
+INSERT INTO user_list_films (user_id, list_id, film_id) VALUES
 	(1,1,28),(1,1,29),
 	(1,2,31),(1,2,32),(1,2,37),(1,2,1),(1,2,2),(1,2,4),(1,2,29),(1,2,38),(1,2,39),
 	(1,3,23),(1,3,35),
 	(1,4,15);
 
+DROP TABLE IF EXISTS emojis;
+CREATE TABLE emojis(
+	id SMALLINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100),
+	UNIQUE unique_name(name(100))
+) COMMENT 'Эмодзи';
+
+INSERT INTO emojis (name) VALUES
+	('Нравится'),('Уныло'),('Ужасно'),('Печально'),('Смешно');
+
+DROP TABLE IF EXISTS user_film_emojis;
+CREATE TABLE user_film_emojis (
+	user_id BIGINT UNSIGNED NOT NULL,
+	film_id BIGINT UNSIGNED NOT NULL,
+	emoji_id SMALLINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY (user_id, film_id, emoji_id),
+	FOREIGN KEY (user_id) REFERENCES users(id),	
+	FOREIGN KEY (film_id) REFERENCES films(id),
+	FOREIGN KEY (emoji_id) REFERENCES emojis(id)
+) COMMENT 'Пользователь-фильм-эмодзи';
+
 /**/
+
+/*SELECT 
+	f.id,
+	IFNULL(ufe1.emoji_id, 0) AS is_good, 
+	IFNULL(ufe2.emoji_id, 0) AS is_dull,
+	IFNULL(ufe3.emoji_id, 0) AS is_scary,
+	IFNULL(ufe4.emoji_id, 0) AS is_sad,
+	IFNULL(ufe5.emoji_id, 0) AS is_fun
+FROM films f
+LEFT JOIN user_film_emojis ufe1 ON f.id = ufe1.film_id
+	AND ufe1.user_id = 1
+	AND ufe1.emoji_id = 1
+LEFT JOIN user_film_emojis ufe2 ON f.id = ufe2.film_id
+	AND ufe2.user_id = 1
+	AND ufe2.emoji_id = 2
+LEFT JOIN user_film_emojis ufe3 ON f.id = ufe3.film_id
+	AND ufe3.user_id = 1
+	AND ufe3.emoji_id = 3
+LEFT JOIN user_film_emojis ufe4 ON f.id = ufe4.film_id
+	AND ufe4.user_id = 1
+	AND ufe4.emoji_id = 4
+LEFT JOIN user_film_emojis ufe5 ON f.id = ufe5.film_id
+	AND ufe5.user_id = 1
+	AND ufe5.emoji_id = 5
+WHERE f.id = 1*/
+
+/*SELECT
+    f.id,
+    0 AS is_good,
+    0 AS is_dull,
+    0 AS is_scary,
+    0 AS is_sad,
+    0 AS is_fun
+FROM films f
+WHERE f.id = 1*/
+
+/*select 
+	`fc`.`collection_id`, 
+	`c`.`name`, 
+	`f`.*, 
+	0 as is_chosen, 
+	0 as is_favorite, 
+	0 as is_must_see 
+from `film_collections` as `fc` 
+inner join `films` as `f` on `fc`.`film_id` = `f`.`id` 
+inner join `collections` as `c` on `fc`.`collection_id` = `c`.`id` 
+where (`fc`.`collection_id` = 1) 
+order by `collection_id` asc, `release_year` desc 
+limit 8 offset 0*/
+
+/*select 
+	`fc`.`collection_id`, 
+	`c`.`name`, 
+	`f`.*, 
+    IFNULL(ul1.list_id, 0) AS is_chosen,
+    IFNULL(ul2.list_id, 0) AS is_favorite,
+    IFNULL(ul3.list_id, 0) AS is_must_see 
+from `film_collections` as `fc` 
+inner join `films` as `f` on `fc`.`film_id` = `f`.`id` 
+inner join `collections` as `c` on `fc`.`collection_id` = `c`.`id` 
+LEFT JOIN user_lists ul1 ON fc.film_id = ul1.film_id
+    AND ul1.user_id = 1
+    AND ul1.list_id = 1
+LEFT JOIN user_lists ul2 ON fc.film_id = ul2.film_id
+    AND ul2.user_id = 1
+    AND ul2.list_id = 2
+LEFT JOIN user_lists ul3 ON fc.film_id = ul3.film_id
+    AND ul3.user_id = 1
+    AND ul3.list_id = 3
+where (`fc`.`collection_id` = 1) 
+order by `collection_id` asc, `release_year` desc 
+limit 8 offset 0*/
+
+/*SELECT
+    fc.collection_id,
+    c.name,
+    f.*,
+    0 as is_chosen,
+    0 as is_favorite,
+    0 as is_must_see
+FROM film_collections fc
+LEFT JOIN films f ON fc.film_id = f.id
+LEFT JOIN collections c ON fc.collection_id = c.id
+ORDER BY fc.collection_id, f.release_year DESC*/
+
+/*SELECT
+    fc.collection_id,
+    c.name,
+    f.*,
+    IFNULL(ul1.list_id, 0) AS is_chosen,
+    IFNULL(ul2.list_id, 0) AS is_favorite,
+    IFNULL(ul3.list_id, 0) AS is_must_see
+FROM film_collections fc
+LEFT JOIN films f ON fc.film_id = f.id
+LEFT JOIN collections c ON fc.collection_id = c.id
+LEFT JOIN user_lists ul1 ON fc.film_id = ul1.film_id
+    AND ul1.user_id = 1
+    AND ul1.list_id = 1
+LEFT JOIN user_lists ul2 ON fc.film_id = ul2.film_id
+    AND ul2.user_id = 1
+    AND ul2.list_id = 2
+LEFT JOIN user_lists ul3 ON fc.film_id = ul3.film_id
+    AND ul3.user_id = 1
+    AND ul3.list_id = 3
+ORDER BY fc.collection_id, f.release_year DESC*/
+
+/*select 
+	`ul`.`list_id` as `collection_id`, 
+	`l`.`name`, 
+	`f`.*, 
+	0 as is_chosen, 
+	0 as is_favorite, 
+	0 as is_must_see 
+from `user_lists` as `ul` 
+left join `lists` as `l` on `ul`.`list_id` = `l`.`id` 
+left join `films` as `f` on `ul`.`film_id` = `f`.`id` 
+where (`user_id` = 1 and `list_id` = 2) 
+order by `list_id` asc, `release_year` desc */
+
+
+/*SELECT
+    ul.list_id AS collection_id,
+    l.name,
+    f.*,
+	IFNULL(ul1.list_id, 0) AS is_chosen, 
+	IFNULL(ul2.list_id, 0) AS is_favorite,
+	IFNULL(ul3.list_id, 0) AS is_must_see
+FROM user_lists ul
+LEFT JOIN lists l ON ul.list_id = l.id
+LEFT JOIN films f ON ul.film_id = f.id
+LEFT JOIN user_lists ul1 ON ul.film_id = ul1.film_id
+	AND ul1.user_id = ul.user_id
+	AND ul1.list_id = 1
+LEFT JOIN user_lists ul2 ON ul.film_id = ul2.film_id
+	AND ul2.user_id = ul.user_id
+	AND ul2.list_id = 2
+LEFT JOIN user_lists ul3 ON ul.film_id = ul3.film_id
+	AND ul3.user_id = ul.user_id
+	AND ul3.list_id = 3
+WHERE ul.user_id = 1
+ORDER BY l.id, f.release_year DESC*/
+
+/*SELECT 
+	f.*,
+	0 as collection_id,
+	IFNULL(ul1.list_id, 0) AS is_chosen, 
+	IFNULL(ul2.list_id, 0) AS is_favorite,
+	IFNULL(ul3.list_id, 0) AS is_must_see
+FROM films f
+LEFT JOIN user_lists ul1 ON f.id = ul1.film_id
+	AND ul1.user_id = 1
+	AND ul1.list_id = 1
+LEFT JOIN user_lists ul2 ON f.id = ul2.film_id
+	AND ul2.user_id = 1
+	AND ul2.list_id = 2
+LEFT JOIN user_lists ul3 ON f.id = ul3.film_id
+	AND ul3.user_id = 1
+	AND ul3.list_id = 3
+ORDER BY release_year DESC*/
 
 /*select * 
 from `films` 

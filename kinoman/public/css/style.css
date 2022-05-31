@@ -118,11 +118,29 @@ svg:hover {
     width: 10rem;
 }
 
-.header_logo_p {
+.home_logo_img {
+    width: 40rem;
+}
+
+.header_logo_p,
+.home_logo_p {
     font-size: 1.25rem;
     color: #f3f3f3;
     font-weight: 700;
     margin-bottom: 0.5rem;
+}
+
+.home_logo_p {
+    font-size: 4rem;
+}
+
+.home_about {
+    font-size: 2rem;
+    margin: auto;
+    padding-top: 4rem;
+    width: 100rem;
+    text-align: center;
+    color: #8c8493;
 }
 
 .header_navigation {
