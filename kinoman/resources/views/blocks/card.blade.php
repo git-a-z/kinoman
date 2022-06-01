@@ -10,7 +10,7 @@
             @endauth
         </div>
         <div>
-            <p class="main_catalog_description_h3">Рейтинг: 7.7 {{$item->release_year}}</p>
+            <p class="main_catalog_description_h3">Рейтинг: {{$item->rating}} {{$item->release_year}}</p>
             <p> {{$item->rus_title}}
                 — {{$item->briefly}}
             </p>
