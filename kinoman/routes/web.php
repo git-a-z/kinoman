@@ -14,21 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
+
 Route::get('/', [
     'uses' => 'App\Http\Controllers\HomeController@index',
     'as' => 'home'
 ]);
 
+// Catalog
 Route::get('/catalog', [
     'uses' => 'App\Http\Controllers\CatalogController@index',
     'as' => 'catalog'
 ]);
 
-Route::get('/film/{film}', [
-    'uses' => 'App\Http\Controllers\CatalogController@film',
-    'as' => 'film'
-]);
-
+// Collection
 Route::get('/collections', [
     'uses' => 'App\Http\Controllers\CollectionController@index',
     'as' => 'collections'
@@ -39,21 +41,33 @@ Route::get('/collection/{id}', [
     'as' => 'collection'
 ]);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
-
-Route::get('/profile', [
-    'uses' => 'App\Http\Controllers\ProfileController@index',
-    'as' => 'profile'
+// Film
+Route::get('/film/{film}', [
+    'uses' => 'App\Http\Controllers\FilmController@film',
+    'as' => 'film'
 ]);
 
-Route::get('/profile_list/{id}', [
-    'uses' => 'App\Http\Controllers\ProfileController@list',
-    'as' => 'profile_list'
+Route::post('/add_del_film_in_list', [
+    'uses' => 'App\Http\Controllers\FilmController@addDelFilmInList',
+    'as' => 'add_del_film_in_list'
 ]);
 
+Route::post('/add_del_film_in_favorites', [
+    'uses' => 'App\Http\Controllers\FilmController@addDelFilmInFavorites',
+    'as' => 'add_del_film_in_favorites'
+]);
+
+Route::post('/add_del_emoji', [
+    'uses' => 'App\Http\Controllers\FilmController@addDelEmoji',
+    'as' => 'add_del_emoji'
+]);
+
+Route::post('/rate_film', [
+    'uses' => 'App\Http\Controllers\FilmController@rateFilm',
+    'as' => 'rate_film'
+]);
+
+// Search
 Route::get('/search', [
     'uses' => 'App\Http\Controllers\SearchController@index',
     'as' => 'search'
@@ -64,22 +78,18 @@ Route::post('/filter', [
     'as' => 'filter'
 ]);
 
-Route::post('/add_del_film_in_list', [
-    'uses' => 'App\Http\Controllers\CatalogController@addDelFilmInList',
-    'as' => 'add_del_film_in_list'
+// Profile
+Route::get('/profile', [
+    'uses' => 'App\Http\Controllers\ProfileController@index',
+    'as' => 'profile'
+]);
+
+Route::get('/profile_list/{id}', [
+    'uses' => 'App\Http\Controllers\ProfileController@list',
+    'as' => 'profile_list'
 ]);
 
 Route::post('/move_film_from_list_to_list', [
     'uses' => 'App\Http\Controllers\ProfileController@moveFilmFromListToList',
     'as' => 'move_film_from_list_to_list'
-]);
-
-Route::post('/add_del_film_in_favorites', [
-    'uses' => 'App\Http\Controllers\ProfileController@addDelFilmInFavorites',
-    'as' => 'add_del_film_in_favorites'
-]);
-
-Route::post('/add_del_emoji', [
-    'uses' => 'App\Http\Controllers\ProfileController@addDelEmoji',
-    'as' => 'add_del_emoji'
 ]);

@@ -24,7 +24,7 @@
                     103.8 512 112 512h160c8.222 0 15.57-6.216 15.96-14.43C288.8 479.2 274.2 464 256 464h-40v-33.77C301.7
                     418.5 368 344.9 368 256V215.1C368 202.7 357.3 192 344 192z"/>
                     </svg>
-                    Rus 16+
+                    Rus
                 </p>
                 <p class="movie_blocks_text_p">
                     {{$data->briefly}}
@@ -32,7 +32,8 @@
                 <p class="movie_blocks_text_p">
                     <span class="movie_blocks_text_grey">Режиссёр:</span> {{$data->directors}} <br>
                     <span class="movie_blocks_text_grey">Актёры:</span> {{$data->actors}} <br>
-                    <span class="movie_blocks_text_grey">Рейтинг Киномана:</span> <span class="movie_blocks_text_white">8,5</span><br>
+                    <span class="movie_blocks_text_grey">Рейтинг Киномана:</span> <span
+                        class="movie_blocks_text_white"> {{$data->rating}} </span><br>
                 </p>
                 <div>
                     <h1 class="movie_blocks_text_p h1_films_p">О фильме:</h1>
@@ -70,29 +71,22 @@
                     @include('blocks.emoji_fun',  ['id' => $emojis[0]->id, 'isSelected' => $emojis[0]->is_fun,  'count' => $emojis[0]->count_fun])
                 </div>
             </div>
-            <div class="movie_widget movie_rating">
-                <h2>Ваша оценка</h2>
-                <div class="movie_rating_number">
-                    <span class="movie_rating_number_span">1</span>
-                    <span class="movie_rating_number_span">2</span>
-                    <span class="movie_rating_number_span">3</span>
-                    <span class="movie_rating_number_span">4</span>
-                    <span class="movie_rating_number_span">5</span>
-                    <span class="movie_rating_number_span">6</span>
-                    <span class="movie_rating_number_span">7</span>
-                    <span class="movie_rating_number_span">8</span>
-                    <span class="movie_rating_number_span">9</span>
-                    <span class="movie_rating_number_span">10</span>
-                </div>
-                <div class="movie_rating_number_p">
-                    <div>
-                        <p>очень плохо</p>
+            @auth
+                <div class="movie_widget movie_rating">
+                    <h2>Ваша оценка</h2>
+                    <div class="movie_rating_number">
+                        @include('blocks.rating_numbers',  ['id' => $data->id, 'rating' => $rating[0]->rating])
                     </div>
-                    <div class="rating_number_p">
-                        <p>отлично</p>
+                    <div class="movie_rating_number_p">
+                        <div>
+                            <p>очень плохо</p>
+                        </div>
+                        <div class="rating_number_p">
+                            <p>отлично</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endauth
         </div>
         <section class="movie_aside_widget">
             <div class="movie_information">

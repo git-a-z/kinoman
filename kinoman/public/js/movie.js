@@ -123,3 +123,17 @@ function addDelEmoji(e, film_id, emoji_id, count) {
         }
     });
 }
+
+function rateFilm(e, film_id, rating) {
+    $.ajax({
+        type: "POST",
+        url: "/rate_film",
+        data: {
+            'film_id': film_id,
+            'rating': rating,
+        },
+        success: function (response) {
+            $('#rating_numbers').replaceWith(response);
+        }
+    });
+}

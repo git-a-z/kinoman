@@ -1106,7 +1106,7 @@ svg:hover {
     padding: 1rem 1.5rem;
     border-radius: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 2%;
     cursor: default;
 }
