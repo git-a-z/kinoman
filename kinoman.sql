@@ -10,7 +10,7 @@ CREATE TABLE films (
 	title VARCHAR(255) NOT NULL,
 	rus_title VARCHAR(255) NOT NULL,
 	release_year YEAR NOT NULL,
-	image_path VARCHAR(255) COMMENT 'мини-постер',
+	image_path VARCHAR(255) COMMENT 'Мини-постер',
 	briefly VARCHAR(255) COMMENT 'Кратко',
 	rating FLOAT(3,1) UNSIGNED DEFAULT 7.7 COMMENT 'Рейтинг',
 	INDEX films_title_year_idx(title, release_year)
@@ -76,7 +76,7 @@ CREATE TABLE persons (
 	firstname VARCHAR(50) NOT NULL,
 	lastname VARCHAR(50) NOT NULL,
 	birthday DATE NOT NULL,
-	image_path VARCHAR(255) COMMENT 'мини-фото',
+	image_path VARCHAR(255) COMMENT 'Мини-фото',
 	INDEX persons_firstname_lastname_birthday_idx(firstname, lastname, birthday)
 ) COMMENT 'Люди';
 
@@ -443,6 +443,9 @@ CREATE TABLE users(
 	`password` VARCHAR(255),
 	email_verified_at TIMESTAMP NULL,
 	remember_token VARCHAR(100),
+	image_path VARCHAR(255) COMMENT 'Фото',
+	show_public BOOLEAN DEFAULT 0 COMMENT 'Показывать публичный профиль',
+	public_address VARCHAR(255) COMMENT 'Публичный профиль',
     created_at TIMESTAMP NULL,
     updated_at TIMESTAMP NULL,
 	UNIQUE unique_email(email(100))
@@ -595,6 +598,11 @@ CREATE TABLE user_film_ratings (
 ) COMMENT 'Пользователь-фильм-рейтинг';
 
 /**/
+
+/*SELECT
+	u.id AS id
+FROM users u
+WHERE u.public_address = 2119798953*/
 
 /*SELECT
 	IFNULL(avg(ufr.rating), 0) AS rating

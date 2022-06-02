@@ -93,3 +93,18 @@ Route::post('/move_film_from_list_to_list', [
     'uses' => 'App\Http\Controllers\ProfileController@moveFilmFromListToList',
     'as' => 'move_film_from_list_to_list'
 ]);
+
+Route::get('/profile_edit', [
+    'uses' => 'App\Http\Controllers\ProfileController@edit',
+    'as' => 'profile_edit'
+]);
+
+Route::post('/profile_update', [
+    'uses' => 'App\Http\Controllers\ProfileController@update',
+    'as' => 'profile_update'
+]);
+
+Route::get('/profile_public/{id}', [
+    'uses' => 'App\Http\Controllers\ProfileController@public',
+    'as' => 'profile_public'
+]);
