@@ -12,17 +12,22 @@
     @isset($data)
         <div class="position_container">
             <div class="profile_container">
-                <div class="user_img">
-                    <img src="img/userfoto.svg">
+                <div>
+                    <img class="user_img" src="img/userfoto1.jpg">
                 </div>
                 <div class="user_info">
-                    <h2>{{$user->name}}</h2>
-                    <p>{{$user->email}}</p>
-                    <p>приватный профиль</p>
-                    <p>999 просмотренных фильмов</p>
+                    <p>Имя: {{$user->name}}</p>
+                    <p>Email: {{$user->email}}</p>
+                    @if ($user->show_public)
+                        <p>Показывать профиль всем
+                            <a href="{{$public_address}}" target="_blank">  ссылка </a>
+                        </p>
+                    @else
+                        <p>Показывать профиль только мне</p>
+                    @endif
                 </div>
-                <div class="profile_settings">
-                    <a href="#"> редактировать профиль</a>
+                <div>
+                    <a href="{{route('profile_edit')}}"> Редактировать </a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -14,11 +16,17 @@ class ProfileController extends Controller
     public function index(): Factory|View|Application
     {
         if (Auth::check()) {
-            $user = Auth::user();
-            $id = Auth::id();
+            return $this->getProfile(Auth::user(), 'profile');
+        } else {
+            return view('auth.login');
+        }
+    }
 
-            $result = DB::select(
-                'SELECT
+    /** @noinspection SqlResolve */
+    public function getProfile($user, $view): Factory|View|Application
+    {
+        $result = DB::select(
+            'SELECT
                 ul.list_id AS collection_id,
                 l.name,
                 f.*,
@@ -38,22 +46,25 @@ class ProfileController extends Controller
                 AND ul3.user_id = ul.user_id
                 AND ul3.list_id = 3
             WHERE ul.user_id = :id
-            ORDER BY l.id, f.release_year DESC', ['id' => $id]
-            );
+            ORDER BY l.id, f.release_year DESC', ['id' => $user->id]
+        );
 
-            $arr = [];
-            foreach ($result as $row) {
-                $arr[$row->name][] = $row;
-            }
-
-            return view('profile', [
-                'data' => $arr,
-                'user' => $user,
-                'route' => 'profile_list'
-            ]);
-        } else {
-            return view('auth.login');
+        $arr = [];
+        foreach ($result as $row) {
+            $arr[$row->name][] = $row;
         }
+
+        $public_address = '';
+        if (!empty($user->public_address)) {
+            $public_address = route('profile_public', ['id' => $user->public_address]);
+        }
+
+        return view($view, [
+            'data' => $arr,
+            'user' => $user,
+            'route' => 'profile_list',
+            'public_address' => $public_address,
+        ]);
     }
 
     public function list(int $list_id): Factory|View|Application
@@ -136,6 +147,63 @@ class ProfileController extends Controller
             return $new_list_id;
         } else {
             return 0;
+        }
+    }
+
+    public function edit(): Factory|View|Application
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            return view('profile_edit', [
+                'user' => $user,
+            ]);
+        } else {
+            return view('auth.login');
+        }
+    }
+
+    public function update(Request $request): View|Factory|Redirector|RedirectResponse|Application
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user_id = $user->id;
+
+            $public_address = $user->public_address;
+            if (empty($public_address)) {
+                $public_address = rand();
+            }
+
+            $params = $request->all();
+            $show_public = !empty($params['show_public']);
+
+            DB::table('users')
+                ->where('id', $user_id)
+                ->update([
+                    'email' => $request->email,
+                    'name' => $request->name,
+                    'show_public' => $show_public,
+                    'public_address' => $public_address,
+                ]);
+
+            return redirect('profile');
+        } else {
+            return view('auth.login');
+        }
+    }
+
+    public function public(int $id): Factory|View|Application
+    {
+        $query = DB::table('users')
+            ->where('public_address', $id)
+            ->where('show_public', 1);
+
+        $user = $query->first();
+
+        if ($user) {
+            return $this->getProfile($user, 'profile_public');
+        } else {
+            return view('auth.login');
         }
     }
 }
