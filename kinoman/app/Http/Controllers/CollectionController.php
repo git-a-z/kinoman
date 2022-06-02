@@ -47,7 +47,7 @@ class CollectionController extends Controller
                 'SELECT
                 fc.collection_id,
                 c.name,
-                f.*,
+                f.*
             FROM film_collections fc
             LEFT JOIN films f ON fc.film_id = f.id
             LEFT JOIN collections c ON fc.collection_id = c.id
