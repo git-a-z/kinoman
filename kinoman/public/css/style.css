@@ -1182,3 +1182,7 @@ svg:hover {
     max-length: 200px;
     border-radius: 25px;
 }
+
+.user_image_input {
+    width: 40rem !important;
+}
