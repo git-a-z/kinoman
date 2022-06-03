@@ -108,3 +108,8 @@ Route::get('/profile_public/{id}', [
     'uses' => 'App\Http\Controllers\ProfileController@public',
     'as' => 'profile_public'
 ]);
+
+Route::post('/upload_user_image', [
+    'uses' => 'App\Http\Controllers\ProfileController@uploadUserImage',
+    'as' => 'upload_user_image'
+]);

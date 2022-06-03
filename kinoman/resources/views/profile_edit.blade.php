@@ -12,13 +12,35 @@
     @auth
         <div class="position_container">
             <div class="profile_container">
-                <div>
-                    <img class="user_img" src="img/userfoto1.jpg">
-                </div>
+                <form method="POST" action="{{ route('upload_user_image') }}" enctype="multipart/form-data"
+                      class="profile_edit_form">
+                    @csrf
+                    <div>
+                        <img class="user_img"
+                             @empty($user->image_path) src="../img/userfoto.svg" @endempty
+                             @isset($user->image_path) src="{{$user->image_path}}" @endisset
+                        >
+                    </div>
+                    <div class="row mb-0">
+                        <div class="col-md-8 offset-md-1">
+                            <div class="custom-file">
+                                <input type="file" name="user_image" class="form-control user_image_input"
+                                       id="chooseFile">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-0">
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn btn-primary btn-km">
+                                <p>{{ __('Загрузить') }}</p>
+                            </button>
+                        </div>
+                    </div>
+                </form>
                 <div class="user_info">
                     <form method="POST" action="{{ route('profile_update') }}" class="profile_edit_form">
+                        @csrf
                         <div>
-                            @csrf
                             <div class="row mb-4">
                                 <label for="name"
                                        class="col-md-4 col-form-label text-md-end text-form-km">{{ __('Имя') }}</label>

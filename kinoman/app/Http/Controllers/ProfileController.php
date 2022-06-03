@@ -31,7 +31,7 @@ class ProfileController extends Controller
             $cur_id = $current_user->id;
 
             $result = DB::select(
-                    'SELECT
+                'SELECT
                     ul.list_id AS collection_id,
                     l.name,
                     f.*,
@@ -234,5 +234,40 @@ class ProfileController extends Controller
         } else {
             return view('auth.login');
         }
+    }
+
+    public function uploadUserImage(Request $request): Redirector|Application|RedirectResponse
+    {
+        // Проверка
+        $this->validate($request, [
+            'user_image' => 'image|nullable|max:2048',
+        ]);
+
+        // Если есть файл
+        if ($request->hasFile('user_image')) {
+            // Имя и расширение файла
+            $filenameWithExt = $request->file('user_image')->getClientOriginalName();
+            // Оригинальное имя файла
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Расширение
+            $extension = $request->file('user_image')->getClientOriginalExtension();
+            // Путь для сохранения
+            $fileNameToStore = "user_images/" . $filename . "_" . time() . "." . $extension;
+            // Сохраняем файл
+            $path = $request->file('user_image')->storeAs('public/', $fileNameToStore);
+
+            if (Auth::check()) {
+                $user = Auth::user();
+                $user_id = $user->id;
+
+                DB::table('users')
+                    ->where('id', $user_id)
+                    ->update([
+                        'image_path' => 'storage/' . $fileNameToStore,
+                    ]);
+            }
+        }
+
+        return redirect('profile_edit');
     }
 }

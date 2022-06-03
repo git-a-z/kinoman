@@ -13,14 +13,17 @@
         <div class="position_container">
             <div class="profile_container">
                 <div>
-                    <img class="user_img" src="img/userfoto1.jpg">
+                    <img class="user_img"
+                         @empty($user->image_path) src="../img/userfoto.svg" @endempty
+                         @isset($user->image_path) src="{{$user->image_path}}" @endisset
+                    >
                 </div>
                 <div class="user_info">
                     <p>Имя: {{$user->name}}</p>
                     <p>Email: {{$user->email}}</p>
                     @if ($user->show_public)
                         <p>Показывать профиль всем
-                            <a href="{{$public_address}}" target="_blank">  ссылка </a>
+                            <a href="{{$public_address}}" target="_blank"> ссылка </a>
                         </p>
                     @else
                         <p>Показывать профиль только мне</p>
