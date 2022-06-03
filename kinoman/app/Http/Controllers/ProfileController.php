@@ -16,7 +16,8 @@ class ProfileController extends Controller
     public function index(): Factory|View|Application
     {
         if (Auth::check()) {
-            return $this->getProfile(Auth::user(), 'profile');
+            $user = Auth::user();
+            return $this->getProfile($user, 'profile');
         } else {
             return view('auth.login');
         }
@@ -25,29 +26,56 @@ class ProfileController extends Controller
     /** @noinspection SqlResolve */
     public function getProfile($user, $view): Factory|View|Application
     {
-        $result = DB::select(
-            'SELECT
-                ul.list_id AS collection_id,
-                l.name,
-                f.*,
-                IFNULL(ul1.list_id, 0) AS is_chosen,
-                IFNULL(ul2.list_id, 0) AS is_favorite,
-                IFNULL(ul3.list_id, 0) AS is_must_see
-            FROM user_list_films ul
-            LEFT JOIN lists l ON ul.list_id = l.id
-            LEFT JOIN films f ON ul.film_id = f.id
-            LEFT JOIN user_list_films ul1 ON ul.film_id = ul1.film_id
-                AND ul1.user_id = ul.user_id
-                AND ul1.list_id = 1
-            LEFT JOIN user_list_films ul2 ON ul.film_id = ul2.film_id
-                AND ul2.user_id = ul.user_id
-                AND ul2.list_id = 2
-            LEFT JOIN user_list_films ul3 ON ul.film_id = ul3.film_id
-                AND ul3.user_id = ul.user_id
-                AND ul3.list_id = 3
-            WHERE ul.user_id = :id
-            ORDER BY l.id, f.release_year DESC', ['id' => $user->id]
-        );
+        if (Auth::check()) {
+            $current_user = Auth::user();
+            $cur_id = $current_user->id;
+
+            $result = DB::select(
+                    'SELECT
+                    ul.list_id AS collection_id,
+                    l.name,
+                    f.*,
+                    IFNULL(ul1.list_id, 0) AS is_chosen,
+                    IFNULL(ul2.list_id, 0) AS is_favorite,
+                    IFNULL(ul3.list_id, 0) AS is_must_see
+                FROM user_list_films ul
+                LEFT JOIN lists l ON ul.list_id = l.id
+                LEFT JOIN films f ON ul.film_id = f.id
+                LEFT JOIN user_list_films ul1 ON ul.film_id = ul1.film_id
+                    AND ul1.user_id = :current_user1
+                    AND ul1.list_id = 1
+                LEFT JOIN user_list_films ul2 ON ul.film_id = ul2.film_id
+                    AND ul2.user_id = :current_user2
+                    AND ul2.list_id = 2
+                LEFT JOIN user_list_films ul3 ON ul.film_id = ul3.film_id
+                    AND ul3.user_id = :current_user3
+                    AND ul3.list_id = 3
+                WHERE ul.user_id = :id
+                ORDER BY l.id, f.release_year DESC', [
+                    'id' => $user->id,
+                    'current_user1' => $cur_id,
+                    'current_user2' => $cur_id,
+                    'current_user3' => $cur_id,
+                ]
+            );
+        } else {
+            $result = DB::select(
+                'SELECT
+                    ul.list_id AS collection_id,
+                    l.name,
+                    f.*,
+                    0 AS is_chosen,
+                    0 AS is_favorite,
+                    0 AS is_must_see
+                FROM user_list_films ul
+                LEFT JOIN lists l ON ul.list_id = l.id
+                LEFT JOIN films f ON ul.film_id = f.id
+                WHERE ul.user_id = :id
+                ORDER BY l.id, f.release_year DESC', [
+                    'id' => $user->id,
+                ]
+            );
+        }
 
         $arr = [];
         foreach ($result as $row) {
@@ -71,7 +99,7 @@ class ProfileController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $user_id = Auth::id();
+            $user_id = $user->id;
             $list1_id = 1;
             $list2_id = 2;
             $list3_id = 3;
@@ -118,7 +146,8 @@ class ProfileController extends Controller
                 'data' => $arr,
                 'user' => $user,
                 'pagination' => $result,
-                'route' => 'profile_list'
+                'route' => 'profile_list',
+                'show_list' => true,
             ]);
         } else {
             return view('auth.login');

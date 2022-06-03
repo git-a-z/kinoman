@@ -2,9 +2,13 @@
     <ul>
         <li class="main_catalog">
             @forelse($data as $key => $collection)
-                <a href="{{route($route, $collection[0]->collection_id)}}" class="catalog_link">
+                @if($show_list)
+                    <a href="{{route($route, $collection[0]->collection_id)}}" class="catalog_link">
+                        <h2 class="h2-km catalog_link">{{$key}}</h2>
+                    </a>
+                @else
                     <h2 class="h2-km catalog_link">{{$key}}</h2>
-                </a>
+                @endif
                 <div class="grid main_catalog_section" id="{{'list_id_'.$collection[0]->collection_id}}">
                     @include('blocks.cards', ['data' => $collection])
                 </div>

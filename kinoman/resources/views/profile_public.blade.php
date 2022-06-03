@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="user_collections">
-            @include('blocks.lists', ['data' => $data, 'route' => $route])
+            @include('blocks.lists', ['data' => $data, 'route' => $route, 'show_list' => false])
         </div>
     @endisset
 @endsection
