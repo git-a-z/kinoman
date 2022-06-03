@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CollectionController extends Controller
 {
+    /** @noinspection SqlResolve */
     public function index(): Factory|View|Application
     {
         if (Auth::check()) {
