@@ -44,7 +44,7 @@
                                             @endforelse
                                         </div>
                                     </details>
-                                    <details class="main_box_btn">
+                                    <details class="main_box_btn  box_btn_actors">
                                         <summary class="main_box_btn_summary">Актеры
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20px"
                                                  height="20px"
@@ -54,7 +54,7 @@
                                         32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"/>
                                             </svg>
                                         </summary>
-                                        <div class="main_box_drop">
+                                        <div class="main_box_drop box_drop_actors">
                                             @forelse($actors as $item)
                                                 <label class="main_box_drop_a">
                                                     <input type="checkbox" name="actor_id_{{$item->id}}"

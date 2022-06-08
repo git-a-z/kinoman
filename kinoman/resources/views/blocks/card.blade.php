@@ -9,7 +9,7 @@
                 @include('blocks.icon_must_see', ['id' => $item->id, 'isSelected' => $item->is_must_see])
             @endauth
         </div>
-        <div>
+        <div class="rating_catalog">
             <p class="main_catalog_description_h3">Рейтинг: {{$item->rating}} {{$item->release_year}}</p>
             <p> {{$item->rus_title}}
                 — {{$item->briefly}}
