@@ -18,12 +18,14 @@ class FilmController extends Controller
         $lists = $this->getLists($film_id);
         $emojis = $this->getEmojis($film_id);
         $rating = $this->getRating($film_id);
+        $tags = $this->getTags($film_id);
 
         return view('film', [
             'data' => $film,
             'lists' => $lists,
             'emojis' => $emojis,
             'rating' => $rating,
+            'tags' => $tags,
         ]);
     }
 
@@ -137,6 +139,45 @@ class FilmController extends Controller
         }
 
         return $rating;
+    }
+
+    /** @noinspection SqlResolve */
+    public function getTags(int $film_id): array
+    {
+        if (Auth::check()) {
+            $user_id = Auth::id();
+
+            $tags = DB::select(
+                'SELECT
+                    t.*,
+                    IFNULL(uft.tag_id, 0) AS is_selected,
+                    SUM(CASE WHEN uf.tag_id = t.id THEN 1 ELSE 0 END) AS count
+                FROM tags t
+                LEFT JOIN user_film_tags uft ON t.id = uft.tag_id AND uft.user_id = :user_id AND uft.film_id = :film_id
+                LEFT JOIN user_film_tags uf ON uf.film_id = :film_id1
+                GROUP BY t.id
+                ORDER BY t.id', [
+                    'user_id' => $user_id,
+                    'film_id' => $film_id,
+                    'film_id1' => $film_id,
+                ]
+            );
+        } else {
+            $tags = DB::select(
+                'SELECT
+                    t.*,
+                    0 AS is_selected,
+                    SUM(CASE WHEN uf.tag_id = t.id THEN 1 ELSE 0 END) AS count
+                FROM tags t
+                LEFT JOIN user_film_tags uf ON uf.film_id = :film_id
+                GROUP BY t.id
+                ORDER BY t.id', [
+                    'film_id' => $film_id,
+                ]
+            );
+        }
+
+        return $tags;
     }
 
     public function addDelFilmInList(Request $request): Factory|View|Application
@@ -318,4 +359,46 @@ class FilmController extends Controller
                 ['rating' => $rating]
             );
     }
+
+    public function addDelTag(Request $request): View|Factory|int|Application
+    {
+        if (Auth::check()) {
+            $user_id = Auth::id();
+            $film_id = $request->film_id;
+            $tag_id = $request->tag_id;
+            $name = $request->name;
+            $count = (int)$request->count;
+            $isSelected = false;
+
+            $query = DB::table('user_film_tags')
+                ->where('user_id', $user_id)
+                ->where('film_id', $film_id)
+                ->where('tag_id', $tag_id);
+
+            $record = $query->first();
+
+            if ($record) {
+                $query->delete();
+                $count--;
+            } else {
+                DB::table('user_film_tags')
+                    ->insertOrIgnore(
+                        ['user_id' => $user_id, 'film_id' => $film_id, 'tag_id' => $tag_id]
+                    );
+                $isSelected = true;
+                $count++;
+            }
+
+            return view('blocks.tag', [
+                'id' => $film_id,
+                'tag_id' => $tag_id,
+                'name' => $name,
+                'count' => $count,
+                'is_selected' => $isSelected,
+            ]);
+        } else {
+            return 0;
+        }
+    }
+
 }

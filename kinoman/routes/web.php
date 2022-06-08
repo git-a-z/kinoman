@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +68,11 @@ Route::post('/rate_film', [
     'as' => 'rate_film'
 ]);
 
+Route::post('/add_del_tag', [
+    'uses' => 'App\Http\Controllers\FilmController@addDelTag',
+    'as' => 'add_del_tag'
+]);
+
 // Search
 Route::get('/search', [
     'uses' => 'App\Http\Controllers\SearchController@index',
@@ -113,3 +119,8 @@ Route::post('/upload_user_image', [
     'uses' => 'App\Http\Controllers\ProfileController@uploadUserImage',
     'as' => 'upload_user_image'
 ]);
+
+// storage
+Route::get('/link_storage', function () {
+    Artisan::call('storage:link');
+});

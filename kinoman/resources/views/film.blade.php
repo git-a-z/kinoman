@@ -37,13 +37,21 @@
                 </p>
                 <div>
                     <h1 class="movie_blocks_text_p h1_films_p">О фильме:</h1>
-                    <p class="movie_blocks_text_p">
-                        {{$data->about}}
-                    </p>
+                    <div>
+                        <p class="movie_blocks_text_p">
+                            {{$data->about}}
+                        </p>
+                    </div>
+
                 </div>
             </div>
             <div class="movie_blocks_img">
-                <img class="movie_blocks_image" src="{{'../img/'.$data->poster}}" alt="{{$data->title}}">
+                <div>
+                    <img class="movie_blocks_image" src="{{'../img/'.$data->poster}}" alt="{{$data->title}}">
+                </div>
+                <div class="movie_blocks_hashtag">
+                    @include('blocks.tags',  ['id' => $data->id, 'tags' => $tags])
+                </div>
             </div>
             <div class="movie_btn_box">
                 @auth
@@ -95,7 +103,7 @@
                     <div class="movie_information_p">
                         <p>
                             <span class="movie_information_span">Страна</span> <br>
-                            США
+                            {{$data->countries}}
                         </p>
                         <p>
                             <span class="movie_information_span"> Жанр</span> <br>
@@ -103,7 +111,7 @@
                         </p>
                         <p>
                             <span class="movie_information_span"> Оригинальное название </span> <br>
-                            ({{$data->title}})
+                            {{$data->title}}
                         </p>
                         <p>
                             <span class="movie_information_span"> Премьера в мире  </span> <br>

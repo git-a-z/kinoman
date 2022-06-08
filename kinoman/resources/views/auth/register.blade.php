@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card card_login_password">
                 <div class="card-header">{{ __('Регистрация') }}</div>
 
                 <div class="card-body">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4_check">
                                 <button type="submit" class="btn btn-primary">
                                 <p>{{ __('Зарегистрироваться') }}</p>
                                 </button>

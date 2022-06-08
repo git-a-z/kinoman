@@ -46,7 +46,8 @@ class CatalogController extends Controller
 
         $films = $query
             ->orderBy('release_year', 'desc')
-            ->paginate(8);
+            ->orderBy('title', 'asc')
+            ->paginate(12);
 
         return view('catalog', ['data' => $films]);
     }

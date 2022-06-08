@@ -137,3 +137,19 @@ function rateFilm(e, film_id, rating) {
         }
     });
 }
+
+function addDelTag(film_id, tag_id, count, name) {
+    $.ajax({
+        type: "POST",
+        url: "/add_del_tag",
+        data: {
+            'film_id': film_id,
+            'tag_id': tag_id,
+            'count': count,
+            'name': name,
+        },
+        success: function (response) {
+            $('#tag_' + tag_id).replaceWith(response);
+        }
+    });
+}
