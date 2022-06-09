@@ -951,10 +951,10 @@ svg:hover {
     color: #8c8493;
 }
 .box_drop_actors{
-    width: 290px;
+    width: 320px;
 }
 .box_btn_actors{
-    width: 290px;
+    width: 320px;
 }
 .main_box_btn_summary {
     display: block;
@@ -982,6 +982,10 @@ svg:hover {
 
 .main_box_btn_summary_svg {
     margin-left: 60%;
+}
+
+.main_box_btn_summary_actors_svg {
+    margin-left: 30%;
 }
 
 .button_year_svg {

@@ -21,7 +21,7 @@ class SearchController extends Controller
             ->distinct()
             ->select('id', 'firstname', 'lastname')
             ->leftJoin('film_persons', 'id', '=', 'person_id')
-            ->where('position_id', '<', 5)
+            ->where('position_id', '<', 6)
             ->orderBy('lastname')
             ->get();
 
@@ -124,7 +124,7 @@ class SearchController extends Controller
             if (!empty($actors)) {
                 $query = $query->where(function ($query) use ($actors) {
                     $query->whereIn('fp.person_id', $actors);
-                    $query->where('fp.position_id', '<', 5);
+                    $query->where('fp.position_id', '<', 6);
                 });
             }
 
